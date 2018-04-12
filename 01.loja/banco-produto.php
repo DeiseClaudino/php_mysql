@@ -9,9 +9,17 @@ function listaProdutos($conexao){
 }
 
 
-function insereProduto($conexao, $nome, $preco) {
-    $query = "insert into produtos (nome, preco) values ('{$nome}', {$preco})";
+function insereProduto($conexao, $nome, $preco, $descricao) {
+    $query = "insert into produtos(nome,preco, descricao) values ('{$nome}', {$preco}, '{$descricao}')";
     $resultadoDaInsercao = mysqli_query($conexao, $query);
     return $resultadoDaInsercao;
 }
+
+function removeProduto($conexao,$id){
+  $query = "delete from produtos where id = {$id}";
+  return mysqli_query($conexao, $query);
+
+}
+
+#Faz todas as operações entre o banco e a pagina
 ?>

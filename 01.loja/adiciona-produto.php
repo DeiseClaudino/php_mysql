@@ -2,12 +2,11 @@
 <?php include("banco-produto.php"); ?>
 <?php include("conecta.php");
 
+$nome = $_POST["nome"];
+$preco = $_POST["preco"];
+$descricao = $_POST["descricao"];
 
-$nome = $_GET["nome"];
-$preco = $_GET["preco"];
-
-$query = "insert into produtos(nome,preco) values ('{$nome}', {$preco})";
-if (insereProduto($conexao, $nome, $preco)) { ?>
+if (insereProduto($conexao, $nome, $preco, $descricao)) { ?>
   <p class="text-success">
       Produto <?= $nome; ?>, <?= $preco; ?> adicionado com sucesso!
   </p>
@@ -23,7 +22,7 @@ if (insereProduto($conexao, $nome, $preco)) { ?>
 <?php
 
 }
-
+#faz a inserção dos dados no banco.
  ?>
 
 <?php include("rodape.php"); ?>
