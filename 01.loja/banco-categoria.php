@@ -10,4 +10,4 @@ function listaCategorias($conexao){
   }
   return $categorias;
 }
-#busca e associa as categorias do produto na página PHP.
+#método que lista categorias.
