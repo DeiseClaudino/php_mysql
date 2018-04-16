@@ -1,7 +1,10 @@
 <?php include("cabecalho.php");
 include("conecta.php");
 include("banco-categoria.php");
-  $categorias = listaCategorias($conexao);
+include("banco-produto.php");
+$id =$_GET['id'];
+$produto = buscaProduto($conexao, $id);
+$categorias = listaCategorias($conexao);
 
   ##cadastro para alteação dos produtos já existentes
 ?>
@@ -9,12 +12,12 @@ include("banco-categoria.php");
 <h1>Alterando Produto</h1>
 <form action="altera-produto.php" method="post">
   <table class="table">
-    <tr><td>Nome:</td> <td><input class="form-control" type="text" name="nome" /><br/></td></tr>
+    <tr><td>Nome:</td> <td><input class="form-control" type="text" name="nome" value="<?=$produto['nome']?>" /><br/></td></tr>
 
-      <tr><td>Preço:</td>  <td><input class="form-control" type="number" name="preco" /><br/></td></tr>
+      <tr><td>Preço:</td>  <td><input class="form-control" type="number" name="preco" value="<?=$produto['preco']?>"/><br/></td></tr>
       <tr>
         <td>Descricao:</td>
-        <td><textarea name="descricao" class="form-control"></textarea></td>
+        <td><textarea name="descricao" class="form-control"><?=$produto['descricao']?></textarea></td>
 
       </tr>
       <tr>

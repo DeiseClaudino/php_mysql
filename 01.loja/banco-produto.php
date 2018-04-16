@@ -21,5 +21,12 @@ function removeProduto($conexao,$id){
 
 }
 
+function buscaProduto($conexao, $id){
+  $query = "select * from produtos where id = {$id}";
+  $resultado = mysqli_query($conexao, $query);
+  return mysqli_fetch_assoc($resultado);
+
+}
+
 #Faz todas as operações entre o banco e a pagina
 ?>
