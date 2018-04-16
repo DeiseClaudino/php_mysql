@@ -5,12 +5,13 @@ include("banco-produto.php");
 $id =$_GET['id'];
 $produto = buscaProduto($conexao, $id);
 $categorias = listaCategorias($conexao);
-
+$usado = $produto['usado'] ? "checked = 'checked'" : "";
   ##cadastro para alteação dos produtos já existentes
 ?>
 
 <h1>Alterando Produto</h1>
 <form action="altera-produto.php" method="post">
+  <input type="hidden" name="id" value="<?=$produto['id']?>">
   <table class="table">
     <tr><td>Nome:</td> <td><input class="form-control" type="text" name="nome" value="<?=$produto['nome']?>" /><br/></td></tr>
 
@@ -23,15 +24,18 @@ $categorias = listaCategorias($conexao);
       <tr>
         <td></td>
         <td>
-          <input type="checkbox" name="usado" value="true">Usado
+          <input type="checkbox" name="usado" <?=$usado?> value="true">Usado
         </td>
       </tr>
       <tr>
         <td>Categoria:</td>
         <td>
           <select  name="categoria_id" class="form-control">
-          <?php foreach ($categorias as $categoria): ?>
-            <option value="<?=$categoria['id']?>">
+          <?php foreach ($categorias as $categoria):
+            $essaEhACategoria = $produto['categoria_id'] == $categoria['id'];
+            $selecao = $essaEhACategoria ? "selected= 'selected'" : "";
+            ?>
+            <option value="<?=$categoria['id']?>" <?=$selecao?>>
                 <?=$categoria['nome']?></br>
             </option>
 
