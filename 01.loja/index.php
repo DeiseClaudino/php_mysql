@@ -12,7 +12,7 @@
       <td><input type="password" name="senha" class="form-control"></td>
     </tr>
     <tr>
-      <button class="btn btn-primary">Login</button>
+      <td><button class="btn btn-primary">Login</button></td>
     </tr>
   </table>
 </form>
