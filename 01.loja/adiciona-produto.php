@@ -1,7 +1,9 @@
 <?php include("cabecalho.php"); ?>
 <?php include("banco-produto.php"); ?>
 <?php include("conecta.php");
+include("logica-usuario.php");
 
+verificaUsuario();
 $nome = $_POST["nome"];
 $preco = $_POST["preco"];
 $descricao = $_POST["descricao"];
