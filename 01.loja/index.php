@@ -1,5 +1,9 @@
 <?php include("cabecalho.php");
 include("logica-usuario.php"); ?>
+
+<?php if (isset($_GET["logout"]) && $_GET["logout"]==true) { ?>
+  <p class="alert-success">Deslogado com Sucesso!</p>
+<?php } ?>
 <?php if (isset($_GET["login"]) && $_GET["login"]==true) { ?>
   <p class="alert-success">Logado com Sucesso!</p>
 <?php } ?>
@@ -15,7 +19,8 @@ include("logica-usuario.php"); ?>
 <?php
             if(usuarioEstaLogado()) {
             ?>
-              <p class="text-success">Você está logado como <?= usuarioLogado() ?></p>
+              <p class="text-success">Você está logado como <?= usuarioLogado() ?> <a href="logout.php">Deslogar</a></p>
+
               <?php
               } else {
               ?>
