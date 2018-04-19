@@ -1,7 +1,7 @@
 <?php include("cabecalho.php"); ?>
 <?php include("banco-produto.php"); ?>
 <?php include("conecta.php");
-include("logica-usuario.php");?>
+include("logica-usuario.php"); ?>
 <table class="table table-striped table-bordered">
   <?php
     $produtos = listaProdutos($conexao);
@@ -27,9 +27,6 @@ include("logica-usuario.php");?>
   ?>
 </table>
 
-<?php if (isset($_SESSION["success"])) { ?>
-  <p class="alert-success"><?=$_SESSION["success"]; ?></p>
-<?php unset($_SESSION["success"]);
-} ?>
+
 
 <?php include("rodape.php"); ?>

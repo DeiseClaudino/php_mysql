@@ -1,17 +1,6 @@
 <?php include("cabecalho.php");
-include("logica-usuario.php"); ?>
-
-<?php if (isset($_SESSION["success"])) { ?>
-  <p class="alert-success"><?=$_SESSION["success"]; ?></p>
-<?php unset($_SESSION["success"]);
-} ?>
-
-<?php if (isset($_SESSION["danger"])) { ?>
-  <p class="alert-danger"><?=$_SESSION["danger"]; ?></p>
-<?php unset($_SESSION["danger"]);
-} ?>
-
-
+include("logica-usuario.php"); 
+?>
             <h1>Bem vindo!</h1>
 <?php
             if(usuarioEstaLogado()) {
