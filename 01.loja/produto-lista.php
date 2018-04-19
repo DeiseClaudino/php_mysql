@@ -28,7 +28,7 @@ include("logica-usuario.php");?>
 </table>
 
 <?php if (isset($_SESSION["success"])) { ?>
-  <p class="alert-success"><?=$_SESSION["success"]; ?>!</p>
+  <p class="alert-success"><?=$_SESSION["success"]; ?></p>
 <?php unset($_SESSION["success"]);
 } ?>
 
