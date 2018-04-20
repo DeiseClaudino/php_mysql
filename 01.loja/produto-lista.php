@@ -1,7 +1,9 @@
 <?php include("cabecalho.php"); ?>
 <?php include("banco-produto.php"); ?>
 <?php include("conecta.php");
-include("logica-usuario.php"); ?>
+include("logica-usuario.php");
+verificaUsuario();
+ ?>
 <table class="table table-striped table-bordered">
   <?php
     $produtos = listaProdutos($conexao);
