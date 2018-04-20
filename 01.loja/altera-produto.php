@@ -1,6 +1,5 @@
 <?php include("cabecalho.php"); ?>
-<?php include("banco-produto.php"); ?>
-<?php include("conecta.php");
+<?php require_once("banco-produto.php");
 $id = $_POST["id"];
 $nome = $_POST["nome"];
 $preco = $_POST["preco"];

@@ -1,7 +1,6 @@
-<?php include("cabecalho.php"); ?>
-<?php include("banco-produto.php"); ?>
-<?php include("conecta.php");
-include("logica-usuario.php");
+<?php require_once("cabecalho.php");
+require_once("banco-produto.php");
+require_once("logica-usuario.php");
 verificaUsuario();
  ?>
 <table class="table table-striped table-bordered">
