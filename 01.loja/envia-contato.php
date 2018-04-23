@@ -4,9 +4,13 @@ $nome = $_POST["nome"];
 $email = $_POST["email"];
 $mensagem = $_POST["mensagem"];
 
-require_once("PHPMailer.php");
+require("PHPMailer.php");
+require("SMTP.php");
 
-$mail = new PHPMailer();
+require_once("PHPMailer.php");
+require_once("SMTP.php");
+
+$mail = new PHPMailer\PHPMailer\PHPMailer();
 
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
@@ -28,6 +32,6 @@ if($mail->send()){
   header("Location: index.php");
 }else{
   $_SESSION["danger"] = "Mensagem NÃO enviada!";
-  header("Location: contato.php");
+  header("Location: contato.php"). $mail->ErrorInfo;
 }
 die();
