@@ -18,8 +18,8 @@ require_once("mostra-alerta.php"); ?>
              <div>
               <ul class="nav navbar-nav">
                    <li><a href="produto-formulario.php">Adiciona Produto</a></li>
-                  <li><a href="sobre.php">Sobre</a></li>
                   <li><a href="produto-lista.php">Listagem de Produtos</a></li>
+                  <li><a href="contato.php">Contato</a></li>
               </ul>
           </div>
       </div>
