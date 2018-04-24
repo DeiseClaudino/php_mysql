@@ -29,5 +29,4 @@ verificaUsuario();
 </table>
 
 
-
 <?php include("rodape.php"); ?>

@@ -10,7 +10,7 @@ function listaProdutos($conexao){
     $produto = new Produto();
     $categoria = new Categoria();
     $categoria->nome = $produto_array['categoria_nome'];
-
+    $produto->id = $produto_array['id'];
     $produto->nome = $produto_array['nome'];
     $produto->preco = $produto_array['preco'];
     $produto->descricao = $produto_array['descricao'];
@@ -47,6 +47,7 @@ function buscaProduto($conexao, $id){
 function alteraProduto($conexao, Produto $produto) {
     $query = "update produtos set nome = '{$produto->nome}',preco = {$produto->preco}, descricao = '{$produto->descricao}', categoria_id = {$produto->categoria->id}, usado = {$produto->usado} where id = '{$produto->id}'";
     return mysqli_query($conexao, $query);
+    var_dump($produto);
 }
 #Faz todas as operações entre o banco e a pagina
 ?>
