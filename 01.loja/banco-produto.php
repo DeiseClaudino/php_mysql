@@ -30,8 +30,8 @@ function buscaProduto($conexao, $id){
 }
 
 
-function alteraProduto($conexao, $id, $nome, $preco, $descricao, $categoria_id, $usado) {
-    $query = "update produtos set nome = '{$nome}',preco = {$preco}, descricao = '{$descricao}', categoria_id = {$categoria_id}, usado = {$usado} where id = '{$id}'";
+function alteraProduto($conexao, Produto $produto) {
+    $query = "update produtos set nome = '{$produto->nome}',preco = {$produto->preco}, descricao = '{$produto->descricao}', categoria_id = {$produto->categoria_id}, usado = {$produto->usado} where id = '{$produto->id}'";
     return mysqli_query($conexao, $query);
 }
 #Faz todas as operações entre o banco e a pagina
