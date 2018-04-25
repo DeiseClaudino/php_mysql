@@ -1,11 +1,11 @@
 <?php
 class Produto{
-  public $id;
-  public $nome;
+  private $id;
+  private $nome;
   private $preco;
-  public $descricao;
-  public $categoria;
-  public $usado;
+  private $descricao;
+  private $categoria;
+  private $usado;
 
   function precoComDesconto($valor = 0.1) {
       if ($valor > 0 && $valor <= 0.5) {
@@ -16,8 +16,7 @@ class Produto{
   }
 
   public function getPreco() {
-      return $this->preco;
-
+      return $this->private
   }
   public function setPreco($preco) {
       if ($preco > 0) {
