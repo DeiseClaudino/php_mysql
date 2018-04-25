@@ -1,13 +1,24 @@
 <?php
 
   class Categoria{
-    public $id;
-    public $nome;
+    private $id;
+    private $nome;
+
+    public function getId(){
+      return $this->id;
+    }
+    public function setId($id){
+      return $this->id = $id;
+    }
+
+    public function getNome(){
+      return $this->nome;
+    }
+    public function setId($nome){
+      return $this->nome = $nome;
+    }
+
 
   }
 
-
-
-
-
- ?>
+?>
