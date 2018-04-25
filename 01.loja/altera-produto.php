@@ -16,22 +16,27 @@ $produto->preco = $_POST['preco'];
 $produto->descricao = $_POST['descricao'];
 $produto->categoria = $categoria;
 
-if(array_key_exists('usado', $_POST)) {
-    $produto->usado = "true";
-} else {
-    $produto->usado = "false";
+
+if(array_key_exists("usado", $_POST)){
+  $produto->usado = "true";
+  var_dump($produto->usado);
+}else{
+  $produto->usado = "false";
 }
 
-if(alteraProduto($conexao, $produto)) { ?>
-    <p class="text-success">O produto <?= $produto->nome ?>, <?= $produto->preco ?> foi alterado.</p>
-<?php } else {
-    $msg = mysqli_error($conexao);
-?>
-    <p class="text-danger">O produto <?= $produto->nome ?> não foi alterado: <?= $msg?></p>
+if (alteraProduto($conexao, $produto)) { ?>
+  <p class="text-success"> Produto <?= $produto->nome; ?>, <?= $produto->preco; ?> alterado com sucesso!</p>
+
+ <?php
+    } else {
+        $msg = mysqli_error($conexao);
+       ?>
+
+   <p class="text-danger">Produto <?= $produto->nome ?>  não alterado! <?= $msg?></p>
 <?php
-}
 
+}
 #faz a inserção dos dados no banco.
-?>
+ ?>
 
 <?php include("rodape.php"); ?>

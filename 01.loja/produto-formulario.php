@@ -11,8 +11,6 @@
 
   $produto = new Produto();
   $produto->categoria = $categoria;
-
-  $usado = "";
   ?>
 
   <h1>Formulário de cadastro</h1>

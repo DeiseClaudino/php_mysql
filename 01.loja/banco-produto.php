@@ -58,6 +58,7 @@ function alteraProduto($conexao, Produto $produto) {
     $query = "update produtos set nome = '{$produto->nome}',preco = {$produto->preco}, descricao = '{$produto->descricao}', categoria_id = {$produto->categoria->id}, usado = {$produto->usado} where id = '{$produto->id}'";
     return mysqli_query($conexao, $query);
     var_dump($produto);
+  
 }
 #Faz todas as operações entre o banco e a pagina
 ?>
