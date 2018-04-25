@@ -7,10 +7,10 @@
 
   $categorias = listaCategorias($conexao);
   $categoria = new Categoria();
-  $ccategoria->id = 1;
+  $categoria->setId(1);
 
   $produto = new Produto();
-  $produto->categoria = $categoria;
+  $produto->getCategoria() = $categoria;
   ?>
 
   <h1>Formulário de cadastro</h1>

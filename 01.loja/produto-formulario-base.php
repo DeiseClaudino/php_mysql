@@ -2,25 +2,25 @@
     <td>Nome</td>
     <td>
         <input class="form-control" type="text" name="nome"
-            value="<?=$produto->nome?>">
+            value="<?=$produto->getNome()?>">
     </td>
 </tr>
 <tr>
     <td>Preço</td>
     <td>
         <input  class="form-control" type="number" step="0.01" name="preco"
-            value="<?=$produto->preco?>">
+            value="<?=$produto->getPreco()?>">
     </td>
 </tr>
 <tr>
     <td>Descrição</td>
     <td>
-        <textarea class="form-control" name="descricao"><?=$produto->descricao?></textarea>
+        <textarea class="form-control" name="descricao"><?=$produto->getDescricao()?></textarea>
     </td>
 </tr>
 
 <?php
-  $usado = $produto->usado ? "checked='checked'" : "";
+  $usado = $produto->getUsado ? "checked='checked'" : "";
 ?>
 
 <tr>
@@ -33,7 +33,7 @@
         <select name="categoria_id" class="form-control">
             <?php
             foreach($categorias as $categoria) :
-                $essaEhACategoria = $produto->categoria->id == $categoria->id;
+                $essaEhACategoria = $produto->categoria->getId()== $categoria->id;
                 $selecao = $essaEhACategoria ? "selected='selected'" : "";
             ?>
                 <option value="<?=$categoria->id?>" <?=$selecao?>>

@@ -4,13 +4,13 @@ require_once("banco-produto.php");
 $id =$_GET['id'];
 $produto = buscaProduto($conexao, $id);
 $categorias = listaCategorias($conexao);
-$usado = $produto->usado ? "checked = 'checked'" : "";
+$usado = $produto->getUsado() ? "checked = 'checked'" : "";
   ##cadastro para alteação dos produtos já existentes
 ?>
 
 <h1>Alterando Produto</h1>
 <form action="altera-produto.php" method="post">
-  <input type="hidden" name="id" value="<?=$produto->id?>">
+  <input type="hidden" name="id" value="<?=$produto->getId()?>">
   <table class="table">
       <?php include("produto-formulario-base.php"); ?>
       <tr>

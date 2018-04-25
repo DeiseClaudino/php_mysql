@@ -10,29 +10,29 @@ $categoria = new Categoria();
 $categoria ->id = $_POST['categoria_id'];
 
 
-$produto->id = $_POST['id'];
-$produto->nome = $_POST['nome'];
-$produto->preco = $_POST['preco'];
-$produto->descricao = $_POST['descricao'];
-$produto->categoria = $categoria;
+$produto->getId() = $_POST['id'];
+$produto->getNome()= $_POST['nome'];
+$produto->getPreco()= $_POST['preco'];
+$produto->getDescricao() = $_POST['descricao'];
+$produto->getCategoria()= $categoria;
 
 
 if(array_key_exists("usado", $_POST)){
-  $produto->usado = "true";
-  var_dump($produto->usado);
+  $produto->getUsado() = "true";
+  var_dump($produto->getUsado());
 }else{
-  $produto->usado = "false";
+  $produto->getUsado() = "false";
 }
 
 if (alteraProduto($conexao, $produto)) { ?>
-  <p class="text-success"> Produto <?= $produto->nome; ?>, <?= $produto->preco; ?> alterado com sucesso!</p>
+  <p class="text-success"> Produto <?= $produto->getNome(); ?>, <?= $produto->getPreco(); ?> alterado com sucesso!</p>
 
  <?php
     } else {
         $msg = mysqli_error($conexao);
        ?>
 
-   <p class="text-danger">Produto <?= $produto->nome ?>  não alterado! <?= $msg?></p>
+   <p class="text-danger">Produto <?= $produto->getNome()?>  não alterado! <?= $msg?></p>
 <?php
 
 }

@@ -33,8 +33,10 @@ public function setNome($nome) {
 
 
   public function getPreco() {
-      return $this->private
+      return $this->preco;
   }
+
+
   public function setPreco($preco) {
       if ($preco > 0) {
           $this->preco = $preco;
