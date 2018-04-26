@@ -8,9 +8,7 @@
   $categorias = listaCategorias($conexao);
   $categoria = new Categoria();
   $categoria->setId(1);
-
-  $produto = new Produto();
-  $produto->setCategoria($categoria);
+  $produto = new Produto("", "", "", $categoria, "");
   ?>
 
   <h1>Formulário de cadastro</h1>

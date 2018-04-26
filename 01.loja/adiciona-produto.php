@@ -4,22 +4,22 @@ require_once("logica-usuario.php");
 require_once("class/Produto.php");
 require_once("class/Categoria.php");
 
-
 verificaUsuario();
 
-$produto = new Produto();
 $categoria= new Categoria();
 $categoria->setId($_POST["categoria_id"]);
 
-$produto->setNome($_POST["nome"]);
-$produto->setPreco($_POST["preco"]);
-$produto->setDescricao($_POST["descricao"]);
-$produto->setCategoria($categoria);
+$nome = $_POST["nome"];
+$preco = $_POST["preco"];
+$descricao = $_POST["descricao"];
+
 if(array_key_exists("usado", $_POST)){
-  $produto->setUsado("true");
+  $usado= "true";
 }else{
-  $produto->setUsado("false");
+  $usado = "false";
 }
+
+$produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
 
 if (insereProduto($conexao, $produto)) { ?>
   <p class="text-success">
