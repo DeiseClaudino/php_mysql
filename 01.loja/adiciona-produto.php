@@ -9,16 +9,16 @@ verificaUsuario();
 
 $produto = new Produto();
 $categoria= new Categoria();
-$categoria->getId()= $_POST["categoria_id"];
+$categoria->setId($_POST["categoria_id"]);
 
-$produto->getNome()= $_POST["nome"];
-$produto->getPreco()= $_POST["preco"];
-$produto->getDescricao() = $_POST["descricao"];
-$produto->getCategoria()= $categoria;
+$produto->setNome($_POST["nome"]);
+$produto->setPreco($_POST["preco"]);
+$produto->setDescricao($_POST["descricao"]);
+$produto->setCategoria($categoria);
 if(array_key_exists("usado", $_POST)){
-  $produto->getUsado() = "true";
+  $produto->setUsado("true");
 }else{
-  $produto->getUsado() = "false";
+  $produto->setUsado("false");
 }
 
 if (insereProduto($conexao, $produto)) { ?>
@@ -32,7 +32,7 @@ if (insereProduto($conexao, $produto)) { ?>
        ?>
 
    <p class="text-danger">
-       Produto <?= $nome ?>  não adicionado! <?= $msg?>
+       Produto <?= $produto->getNome() ?>  não adicionado! <?= $msg?>
    </p>
 <?php
 

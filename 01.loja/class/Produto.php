@@ -51,12 +51,13 @@ public function setDescricao($descricao) {
     $this->descricao = $descricao;
 }
 
-public function geCategoria() {
+public function getCategoria() {
   return $this->categoria;
 }
 
-public function setCategoria($categoria) {
+public function setCategoria($categoria){
   $this->categoria = $categoria;
+
 }
 
 public function getUsado() {
@@ -66,22 +67,6 @@ public function getUsado() {
 public function setUsado($usado) {
   $this->usado = $usado;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

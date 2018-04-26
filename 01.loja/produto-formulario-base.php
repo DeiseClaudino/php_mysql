@@ -20,7 +20,7 @@
 </tr>
 
 <?php
-  $usado = $produto->getUsado ? "checked='checked'" : "";
+  $usado = $produto->getUsado() ? "checked='checked'" : "";
 ?>
 
 <tr>
@@ -33,11 +33,11 @@
         <select name="categoria_id" class="form-control">
             <?php
             foreach($categorias as $categoria) :
-                $essaEhACategoria = $produto->categoria->getId()== $categoria->id;
+                $essaEhACategoria = $produto->getCategoria()->getId() == $categoria->getId();
                 $selecao = $essaEhACategoria ? "selected='selected'" : "";
             ?>
-                <option value="<?=$categoria->id?>" <?=$selecao?>>
-                    <?=$categoria->nome?>
+                <option value="<?=$categoria->getId()?>" <?=$selecao?>>
+                    <?=$categoria->getNome()?>
                 </option>
             <?php endforeach ?>
         </select>

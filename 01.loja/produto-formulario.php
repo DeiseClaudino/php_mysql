@@ -10,7 +10,7 @@
   $categoria->setId(1);
 
   $produto = new Produto();
-  $produto->getCategoria() = $categoria;
+  $produto->setCategoria($categoria);
   ?>
 
   <h1>Formulário de cadastro</h1>
