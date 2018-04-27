@@ -17,6 +17,12 @@ function __construct($nome, $preco, $descricao, Categoria $categoria, $usado){
 
 }
 
+function __toString(){
+     return $this->nome. " : R$ ". $this ->preco;
+
+
+}
+
 
 
   function precoComDesconto($valor = 0.1) {
