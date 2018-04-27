@@ -23,7 +23,10 @@ function __toString(){
 
 }
 
+function __destruct(){
+  echo "Produto destruído!";
 
+}
 
   function precoComDesconto($valor = 0.1) {
       if ($valor > 0 && $valor <= 0.5) {
