@@ -1,5 +1,6 @@
-<?php require_once("cabecalho.php"); ?>
-<?php require_once("banco-produto.php");
+<?php
+require_once("cabecalho.php");
+require_once("banco-produto.php");
 require_once("logica-usuario.php");
 $id = $_POST['id'];
 removeProduto($conexao, $id);

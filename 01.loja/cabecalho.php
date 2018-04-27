@@ -1,6 +1,8 @@
 <?php
-error_reporting(E_ALL ^ E_NOTICE);
-require_once("mostra-alerta.php"); ?>
+  error_reporting(E_ALL ^ E_NOTICE);
+  require_once("mostra-alerta.php");
+  //navbar-brand = marca
+?>
 <html>
 <head>
     <title>Minha loja</title>
@@ -12,7 +14,7 @@ require_once("mostra-alerta.php"); ?>
   <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
           <div class="navbar-header">
-              <a href="index.php" class="navbar-brand">Minha Loja</a> //navbar-brand = marca
+              <a href="index.php" class="navbar-brand">Minha Loja</a>
           </div>
 
              <div>

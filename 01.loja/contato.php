@@ -1,6 +1,7 @@
 <?php
 require_once("cabecalho.php");
 require_once("logica-usuario.php");
+
 verificaUsuario();?>
 
 <h1>Contato</h1>
@@ -25,5 +26,5 @@ verificaUsuario();?>
   </tr>
 </table>
 </form>
-<?php
-require_once("rodape.php");  ?>
+
+<?php require_once("rodape.php");  ?>
