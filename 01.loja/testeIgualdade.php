@@ -17,4 +17,16 @@ if ($produto === $outroProduto) {
 } else {
     echo ("sao diferentes");
 }
+
+// echo $produto; inserir esse echo onde ocorre a impressão
+function __toString(){
+     return $this->nome. " : R$ ". $this ->preco;
+
+
+}
+
+function __destruct(){
+  echo "Produto destruído!";
+}
+}
 ?>
