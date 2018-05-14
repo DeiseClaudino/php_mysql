@@ -28,5 +28,5 @@ function __toString(){
 function __destruct(){
   echo "Produto destruído!";
 }
-}
+
 ?>
