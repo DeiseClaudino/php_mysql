@@ -1,49 +1,48 @@
 #Projeto do curso PHP e MySQL I e II - Alura.
+
 O site é uma loja onde se mantém o controle de produtos, inserindo, alterando e removendo os mesmos. É possível também encaminhar emails (porém todas essas funcionalidades só estão disponíveis ao usuário que possui email e senha cadastrados e depois de ter efetuado login). A senha utiliza criptografia Md5.
 
-#Começando
+#Getting Started
+
 Essas instruções farão com que você tenha uma cópia do projeto em execução na sua máquina local para fins de desenvolvimento e teste. Veja a implantação de notas sobre como implantar o projeto em um sistema ativo.
 
-#Pré-requisitos
+#Prerequisites
+
 É necessário obter o banco de dados MySQL para inserção e conferência de dados de cliente e produtos, e para alterações do projeto é necessário a utilização de um editor de sua preferência (no desenvolvimento foi original foi utilizado o Atom).
 
+Dados armazenados: Nome, Preço, Descrição, Usado (checkbox true/ false) e Categoria (select Esporte, Escolar, Mobilidade, Guloseimas).
 
-Give examples
-**** #Uma série passo a passo de exemplos que dizem que você precisa obter um env de desenvolvimento em execução
+#Installing
 
-Diga qual será o passo
+  Para executar através do terminal é  usado o comando "sudo php -S 0.0.0.0:80 -t 01.loja" com isso o link está disponível para acesso.
 
-Give the example
-E repita
+#Running the tests
 
-until finished
-Termine com um exemplo de obter alguns dados do sistema ou usá-los para uma pequena demonstração**********
-
-#Executando os testes
 Na pasta "Outros" há um arquivo em PHP chamado testeIgualdade.php, onde é feito um teste que compara objetos. Dentro deles há as mesmas informações, porém o resultado impresso é que são diferentes, pois existem duas instâncias de produto.
 
-******** #Desdobramento, desenvolvimento ********
 
+#Built With
 
-#Construído com
 PHP - Linguagem de Programação;
 CSS e Bootstrap - estilização;
 MySQL - Banco de Dados.
 
 
-************** #Contribuindo *****************
-Por favor, leia CONTRIBUTING.md para detalhes sobre o nosso código de conduta, e o processo para enviar pedidos de pull para nós.
+#Contributing
 
-#Versão
-Nós usamos SemVer para versionamento. Para as versões disponíveis, consulte as tags neste repositório .
+Para contribuir com o projeto, siga as convenções de coding standards, e abra um merge request para a branch contributing.
 
-#Autores
+#Authors
+
 Deise Claudino
 Auxiliada por:
 Ricieri Garcez
 Rodolfo Ramos
-#Padrões de codificação
+
+#Coding Standards
+
 PSR-2
 
-#Agradecimentos
+#Acknowledgments
+
 Desenvolvido com base no que foi proposto no curso Alura, grande absorção de conhecimento.
