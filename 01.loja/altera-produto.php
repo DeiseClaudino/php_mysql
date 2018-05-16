@@ -10,9 +10,9 @@ $categoria->setId($_POST['categoria_id']);
 
 
 $produto->setId($_POST['id']);
-$produto->setNome( $_POST['nome']);
-$produto->setPreco( $_POST['preco']);
-$produto->setDescricao($_POST['descricao']);
+$nome = $_POST['nome'];
+$preco = $_POST['preco'];
+$descricao = $_POST['descricao'];
 $produto->setCategoria( $categoria);
 
 

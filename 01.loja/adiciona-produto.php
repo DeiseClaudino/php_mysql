@@ -9,11 +9,11 @@ verificaUsuario();
 $categoria= new Categoria();
 $categoria->setId($_POST["categoria_id"]);
 
-$nome = $_POST["nome"];
-$preco = $_POST["preco"];
-$descricao = $_POST["descricao"];
+$nome = $_POST['nome'];
+$preco = $_POST['preco'];
+$descricao = $_POST['descricao'];
 
-if(array_key_exists("usado", $_POST)){
+if(array_key_exists('usado', $_POST)){
   $usado= "true";
 }else{
   $usado = "false";
