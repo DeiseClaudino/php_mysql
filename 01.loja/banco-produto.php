@@ -15,8 +15,9 @@ function listaProdutos($conexao){
     $preco = $produto_array['preco'];
     $descricao = $produto_array['descricao'];
     $usado = $produto_array['usado'];
-      $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
-      $id = $produto_array['id'];
+    $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
+    $produto->setId($produto_array['id']);  
+      /*$id = $produto_array['id'];*/
       array_push($produtos, $produto);
 
   }

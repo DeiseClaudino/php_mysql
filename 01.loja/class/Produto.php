@@ -17,7 +17,6 @@ function __construct($nome, $preco, $descricao, Categoria $categoria, $usado){
 
 }
 
-
   function precoComDesconto($valor = 0.1) {
       if ($valor > 0 && $valor <= 0.5) {
 
