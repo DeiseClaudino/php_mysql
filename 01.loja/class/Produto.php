@@ -7,16 +7,15 @@ class Produto{
   private $categoria;
   private $usado;
 
-function __construct($nome, $preco, $descricao, Categoria $categoria, $usado){
-  $this->nome = $nome;
-  $this->preco = $preco;
-  $this->descricao = $descricao;
-  $this->categoria = $categoria;
-  $this->usado = $usado;
+  function __construct($nome, $preco, $descricao, Categoria $categoria, $usado){
+    $this->nome = $nome;
+    $this->preco = $preco;
+    $this->descricao = $descricao;
+    $this->categoria = $categoria;
+    $this->usado = $usado;
 
 
-}
-
+  }
 
   function precoComDesconto($valor = 0.1) {
       if ($valor > 0 && $valor <= 0.5) {

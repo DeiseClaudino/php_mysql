@@ -53,6 +53,8 @@ function buscaProduto($conexao, $id){
   $produto->setUsado($produto_buscado['usado']);
 
 return $produto;
+
+
 }
 
 function alteraProduto($conexao, Produto $produto) {
