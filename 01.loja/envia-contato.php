@@ -4,11 +4,8 @@ $nome = $_POST["nome"];
 $email = $_POST["email"];
 $mensagem = $_POST["mensagem"];
 
-require("PHPMailer.php");
-require("SMTP.php");
+require_once("vendor/autoload.php");
 
-require_once("PHPMailer.php");
-require_once("SMTP.php");
 
 $mail = new PHPMailer\PHPMailer\PHPMailer();
 
@@ -34,4 +31,3 @@ if($mail->send()){
   $_SESSION["danger"] = "Mensagem NÃO enviada!";
   header("Location: contato.php"). $mail->ErrorInfo;
 }
-die();
