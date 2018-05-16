@@ -42,16 +42,17 @@ function buscaProduto($conexao, $id){
   $query = "select * from produtos where id = {$id}";
   $resultado = mysqli_query($conexao, $query);
   $produto_buscado = mysqli_fetch_assoc($resultado);
-  $categoria = new Categoria();
-  $categoria->setId($produto_buscado['categoria_id']);
 
-  $produto = new Produto();
+  $categoria = new Categoria();
+  $categoria_id = $produto_buscado['categoria_id'];
+
+  $nome = $produto_buscado['nome'];
+  $preco = $produto_buscado['preco'];
+  $descricao = $produto_buscado['descricao'];
+  $usado = $produto_buscado['usado'];
+
+  $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
   $produto->setId($produto_buscado['id']);
-  $produto->setNome( $produto_buscado['nome']);
-  $produto->setDescricao( $produto_buscado['descricao']);
-  $produto->setCategoria( $categoria);
-  $produto->setPreco( $produto_buscado['preco']);
-  $produto->setUsado($produto_buscado['usado']);
 
 return $produto;
 
@@ -62,7 +63,7 @@ function alteraProduto($conexao, Produto $produto) {
     $query = "update produtos set nome = '{$produto->getNome()}',preco = {$produto->getPreco()}, descricao = '{$produto->getDescricao()}', categoria_id = {$produto->getCategoria()->getId()}, usado = {$produto->getUsado()} where id = '{$produto->getId()}'";
     return mysqli_query($conexao, $query);
     var_dump($produto);
-
+    die();
 }
 #Faz todas as operações entre o banco e a pagina
 ?>
