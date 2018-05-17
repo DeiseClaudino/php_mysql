@@ -7,4 +7,3 @@ removeProduto($conexao, $id);
 $_SESSION["success"] = "Produto removido com sucesso";
 header("Location: produto-lista.php");
 die();
-?>

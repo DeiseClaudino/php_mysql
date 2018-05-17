@@ -6,7 +6,7 @@ require_once 'banco-produto.php';
 <table class="table table-striped table-bordered">
     <?php
     $produtos = listaProdutos($conexao);
-    foreach($produtos as $produto) :
+    foreach ($produtos as $produto) :
     ?>
         <tr>
             <td><?= $produto->getNome() ?></td>

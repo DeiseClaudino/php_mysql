@@ -9,7 +9,7 @@
   $categoria = new Categoria();
   $categoria->setId(1);
   $produto = new Produto("", "", "", $categoria, "");
-  ?>
+    ?>
 
   <h1>Formulário de cadastro</h1>
   <form action="adiciona-produto.php" method="post">
@@ -21,4 +21,4 @@
     </table>
   </form>
 
-<?php include("rodape.php"); #Fromulário para insercao de dados   ?>
+<?php include("rodape.php"); #Fromulário para insercao de dados?>
