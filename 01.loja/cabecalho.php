@@ -1,5 +1,6 @@
 <?php
-  error_reporting(E_ALL ^ E_NOTICE);
+  error_reporting(E_ALL);
+
   require_once("mostra-alerta.php");
   //navbar-brand = marca
 ?>
