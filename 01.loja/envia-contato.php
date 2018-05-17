@@ -24,10 +24,10 @@ $mail->msgHTML("<html> de: {$nome} <br/> email: {$email} <br/> mensagem: {$mensa
 
 $mail->AltBody = "de: {$nome} \nemail: {$email} <br/> \nmensagem: {$mensagem}";
 
-if($mail->send()){
-  $_SESSION["success"] = "Mensagem enviada!";
-  header("Location: index.php");
-}else{
-  $_SESSION["danger"] = "Mensagem NÃO enviada!";
-  header("Location: contato.php"). $mail->ErrorInfo;
+if ($mail->send()) {
+    $_SESSION["success"] = "Mensagem enviada!";
+    header("Location: index.php");
+} else {
+    $_SESSION["danger"] = "Mensagem NÃO enviada!";
+    header("Location: contato.php"). $mail->ErrorInfo;
 }
