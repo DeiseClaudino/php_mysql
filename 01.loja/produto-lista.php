@@ -1,6 +1,6 @@
 <?php
-require_once("cabecalho.php");
-require_once("banco-produto.php");
+require_once 'cabecalho.php';
+require_once 'banco-produto.php';
 ?>
 
 <table class="table table-striped table-bordered">
