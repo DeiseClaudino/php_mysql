@@ -1,7 +1,7 @@
 <?php
 
-require_once ("cabecalho.php");
-require_once ("logica-usuario.php");
+require_once 'cabecalho.php';
+require_once 'logica-usuario.php';
 
 ?>
   <h1>Bem vindo!</h1>
@@ -35,5 +35,5 @@ if (usuarioEstaLogado()) {
 ?>
 
 <?php
-include 'rodape7.php';
+include 'rodape.php';
 ?>

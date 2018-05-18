@@ -1,7 +1,7 @@
 <?php
-session_start();
 function mostraAlerta($tipo)
 {
+      session_start();
     if (isset($_SESSION[$tipo])) {
         ?>
 <p class="alert-<?= $tipo?>"><?=$_SESSION[$tipo]?></p>
