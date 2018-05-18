@@ -1,4 +1,5 @@
         </div>
     </div>
-</body>
+  </body>
 </html>
+<?php echo ("Favor preencher todas as informações");?>
