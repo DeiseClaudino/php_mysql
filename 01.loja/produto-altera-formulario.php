@@ -1,6 +1,6 @@
-<?php require_once 'cabecalho.php';
-require_once 'banco-categoria.php';
-require_once 'banco-produto.php';
+<?php require_once ("cabecalho.php");
+require_once ("banco-categoria.php");
+require_once ("banco-produto.php");
 $id = $_GET['id'];
 $produto = buscaProduto($conexao, $id);
 

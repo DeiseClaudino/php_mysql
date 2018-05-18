@@ -1,7 +1,5 @@
 <?php
 
-namespace Loja;
-
 class Produto
 {
     private $id;

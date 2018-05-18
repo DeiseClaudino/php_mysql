@@ -1,7 +1,7 @@
 <?php
-require_once 'conecta.php';
-require_once 'class/Produto.php';
-require_once 'class/Categoria.php';
+require_once ("conecta.php");
+require_once ("class/Produto.php");
+require_once ("class/Categoria.php");
 function listaProdutos($conexao){
   $produtos = array();
   $resultado = mysqli_query($conexao, "select p.*,c.nome as categoria_nome from produtos as p join categorias as c on c.id = p.categoria_id");
