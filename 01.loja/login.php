@@ -1,5 +1,5 @@
 <?php require_once ("banco-usuario.php");
-require_once ("logica-usuario.php")
+require_once ("logica-usuario.php");
 
 $usuario = buscaUsusario($conexao, $_POST["email"], $_POST["senha"]);
 var_dump($usuario);

@@ -5,6 +5,7 @@ require_once("logica-usuario.php");
 verificaUsuario();?>
 
 <h1>Contato</h1>
+
 <form action="envia-contato.php" method="post">
 <table class="table">
   <tr>
