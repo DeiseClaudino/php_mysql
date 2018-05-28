@@ -11,3 +11,7 @@ h1{
     padding: 40px 15px;
     text-align: center;
 }
+
+tr:hover td{
+    background-color:#5CACEE;
+}

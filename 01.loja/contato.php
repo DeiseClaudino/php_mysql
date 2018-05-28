@@ -7,7 +7,7 @@ verificaUsuario();?>
 <h1>Contato</h1>
 
 <form action="envia-contato.php" method="post">
-<table class="table">
+<table class="table table-striped">
   <tr>
     <td>Nome</td>
     <td><input type="text" name="nome" class="form-control"></td>
