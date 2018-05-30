@@ -3,7 +3,7 @@ require_once("conecta.php");
 function buscaUsusario($conexao, $email, $senha)
 {
     $senhaMd5 = md5($senha);
-    $email = $email->quote($conexao);
+    $email = $conexao->quote($email);
     $query ="select * from usuarios where email = '{$email}' and senha = '{$senhaMd5}'";
 
     var_dump($query);
