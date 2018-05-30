@@ -1,9 +1,6 @@
 <?php
 
-$conn = new PDO(
-    'mysql:host=localhost;dbname=Produtos', 'root', ''
-);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$conexao=new PDO("mysql:host=localhost;dbname=Produtos", "root", "");
 
 
 /*$conexao = mysqli_connect("localhost", "root", "", "Produtos");
