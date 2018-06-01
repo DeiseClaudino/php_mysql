@@ -22,6 +22,7 @@ function usuarioLogado()
 function logaUsuario($email)
 {
     $_SESSION["usuario_logado"] = $email;
+
 }
 
 function logout()

@@ -6,8 +6,12 @@ require_once 'logica-usuario.php';
 ?>
   <h1>Bem vindo!</h1>
 <?php
+//var_dump($_SESSION);die;
+
 if (usuarioEstaLogado()) {
+//  exit("oi");
 ?>
+
   <p class="text-success">
     Você está logado como <?= usuarioLogado() ?> <a href="logout.php">Deslogar</a>
   </p>
