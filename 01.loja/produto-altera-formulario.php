@@ -3,8 +3,8 @@
 $id = $_GET['id'];
 $produtoDao = new ProdutoDao($conexao);
 $produto = $produtoDao->buscaProduto($id);
-
-$categorias = listaCategorias($conexao);
+$categoriaDao = new CategoriaDao($conexao);
+$categorias = $categoriaDao->listaCategorias();
 $usado = $produto->getUsado() ? "checked = 'checked'" : "";
   ##cadastro para alteação dos produtos já existentes
 ?>

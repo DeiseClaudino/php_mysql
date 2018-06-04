@@ -4,8 +4,8 @@
   require_once 'logica-usuario.php';
 
   verificaUsuario();
-
-  $categorias = listaCategorias($conexao);
+  $categoriaDao = new CategoriaDao($conexao);
+  $categorias = $categoriaDao->listaCategorias();
   $categoria = new Categoria();
   $categoria->setId(1);
   $produto = new Produto("", "", "", $categoria, "");
