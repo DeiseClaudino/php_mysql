@@ -6,11 +6,12 @@ function carregaClasse($nomeDaClasse)
 
 spl_autoload_register("carregaClasse");
 
-require_once 'conecta.php';
+
 
   error_reporting(E_ALL);
 
   require_once 'mostra-alerta.php';
+  require_once 'conecta.php';
   //navbar-brand = marca
 ?>
 <html>

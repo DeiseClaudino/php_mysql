@@ -1,11 +1,12 @@
 <?php
 require_once 'cabecalho.php';
-require_once 'banco-produto.php';
+
 ?>
 <h1>Lista de Produtos</h1>
 <table class="table table-striped table-bordered">
     <?php
-    $produtos = listaProdutos($conexao);
+    $produtoDao = new ProdutoDao($conexao);
+    $produtos = $produtoDao->listaProdutos();
     foreach ($produtos as $produto) :
     ?>
         <tr>

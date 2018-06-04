@@ -1,7 +1,8 @@
 <?php require_once 'cabecalho.php';
 
 $id = $_GET['id'];
-$produto = buscaProduto($conexao, $id);
+$produtoDao = new ProdutoDao($conexao);
+$produto = $produtoDao->buscaProduto($id);
 
 $categorias = listaCategorias($conexao);
 $usado = $produto->getUsado() ? "checked = 'checked'" : "";
