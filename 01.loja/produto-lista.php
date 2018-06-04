@@ -1,6 +1,6 @@
 <?php
-require_once("cabecalho.php");
-require_once("banco-produto.php");
+require_once 'cabecalho.php';
+require_once 'banco-produto.php';
 ?>
 <h1>Lista de Produtos</h1>
 <table class="table table-striped table-bordered">
@@ -32,4 +32,4 @@ require_once("banco-produto.php");
     ?>
 </table>
 
-<?php include("rodape.php"); ?>
+<?php include 'rodape.php'; ?>

@@ -1,7 +1,6 @@
 <?php
 function listaCategorias($conexao)
 {
-    require_once("class/Categoria.php");
     require_once("conecta.php");
     $categorias = array();
     $query = "select * from categorias";

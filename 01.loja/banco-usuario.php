@@ -1,5 +1,5 @@
 <?php
-require_once("conecta.php");
+require_once 'conecta.php';
 function buscaUsusario($conexao, $email, $senha)
 {
     $senhaMd5 = $conexao->quote(md5($senha));

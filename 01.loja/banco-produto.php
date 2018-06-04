@@ -1,7 +1,6 @@
 <?php
-require_once("conecta.php");
-require_once("class/Produto.php");
-require_once("class/Categoria.php");
+require_once 'conecta.php';
+
 function listaProdutos($conexao)
 {
     $produtos = array();
