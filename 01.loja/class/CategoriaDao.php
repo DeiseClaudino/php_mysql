@@ -6,7 +6,7 @@ class CategoriaDao
     {
         $this->conexao = $conexao;
     }
-    public function listaCategorias($conexao)
+    public function listaCategorias()
     {
         $categorias = array();
         $query = "select * from categorias";

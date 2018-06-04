@@ -20,6 +20,8 @@ class ProdutoDao
             $preco = $produto_array['preco'];
             $descricao = $produto_array['descricao'];
             $usado = $produto_array['usado'];
+            $isbn = $produto_array['isbn'];
+            $tipoProduto = $produto_array['tipoProduto'];
             $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
             $produto->setId($produto_array['id']);
             /*$id = $produto_array['id'];*/
@@ -31,7 +33,7 @@ class ProdutoDao
 
     public function insereProduto(Produto $produto)
     {
-        $query = "insert into produtos(nome,preco, descricao, categoria_id, usado) values ('{$produto->getNome()}', {$produto->getPreco()}, '{$produto->getDescricao()}', {$produto->getCategoria()->getId()}, {$produto->getUsado()})";
+        $query = "insert into produtos(nome,preco, descricao, categoria_id, usado) values ('{$produto->getNome()}', {$produto->getPreco()}, '{$produto->getDescricao()}', {$produto->getCategoria()->getId()}, {$produto->getUsado()},  '{$produto->getIsbn()}', '{$produto->getTipoProduto()}')";
         $resultadoDaInsercao = mysqli_query($this->conexao, $query);
         return $resultadoDaInsercao;
     }
