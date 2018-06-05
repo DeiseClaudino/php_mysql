@@ -38,6 +38,16 @@ class Produto
         return $this instanceof Livro;
     }
 
+    public function temTaxaImpressao()
+    {
+        return $this instanceof LivroFisico;
+    }
+
+    public function temWaterMark()
+    {
+        return $this instanceof Ebook;
+    }
+
     public function getId()
     {
         return $this->id;

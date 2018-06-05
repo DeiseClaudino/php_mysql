@@ -42,8 +42,18 @@ class ProdutoDao
         if ($produto->temIsbn()) {
             $isbn = $produto->getIsbn();
         }
+        $taxaImpressao = "";
+        if ($produto->temTaxaImpressao()) {
+            $taxaImpressao = $produto->getTaxaImpressao();
+        }
+        $waterMark = "";
+        if ($produto->temWaterMark()) {
+            $waterMark = $produto->getWaterMark();
+        }
+
+
         $tipoProduto = get_class($produto);
-        $query = "insert into produtos(nome,preco, descricao, categoria_id, usado, isbn, tipoProduto) values ('{$produto->getNome()}', {$produto->getPreco()}, '{$produto->getDescricao()}', {$produto->getCategoria()->getId()}, {$produto->getUsado()},  '{$isbn}', '{$tipoProduto}')";
+        $query = "insert into produtos(nome,preco, descricao, categoria_id, usado, isbn, tipoProduto, taxaImpressao, WaterMark) values ('{$produto->getNome()}', {$produto->getPreco()}, '{$produto->getDescricao()}', {$produto->getCategoria()->getId()}, {$produto->getUsado()},  '{$isbn}', '{$tipoProduto}', '{$taxaImpressao}', '{$waterMark}')";
         $resultadoDaInsercao = mysqli_query($this->conexao, $query);
         return $resultadoDaInsercao;
     }
