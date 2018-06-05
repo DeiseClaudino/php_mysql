@@ -22,11 +22,11 @@ class ProdutoDao
             $usado = $produto_array['usado'];
             $isbn = $produto_array['isbn'];
             $tipoProduto = $produto_array['tipoProduto'];
-            if($tipoProduto == "Livro"){
-            $produto = new Livro($nome, $preco, $descricao, $categoria, $usado);
-            $produto->setIsbn($isbn);
-            }else{
-              $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
+            if ($tipoProduto == "Livro") {
+                $produto = new Livro($nome, $preco, $descricao, $categoria, $usado);
+                $produto->setIsbn($isbn);
+            } else {
+                $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
             }
             $produto->setId($produto_id);
 
@@ -40,8 +40,7 @@ class ProdutoDao
     {
         $isbn = "";
         if ($produto->temIsbn()) {
-          $isbn = $produto->getIsbn();
-
+            $isbn = $produto->getIsbn();
         }
         $tipoProduto = get_class($produto);
         $query = "insert into produtos(nome,preco, descricao, categoria_id, usado, isbn, tipoProduto) values ('{$produto->getNome()}', {$produto->getPreco()}, '{$produto->getDescricao()}', {$produto->getCategoria()->getId()}, {$produto->getUsado()},  '{$isbn}', '{$tipoProduto}')";
@@ -77,11 +76,10 @@ class ProdutoDao
 
     public function alteraProduto(Produto $produto)
     {
-      $isbn = "";
-      if ($produto->temIsbn()) {
-        $isbn = $produto->getIsbn();
-
-      }
+        $isbn = "";
+        if ($produto->temIsbn()) {
+            $isbn = $produto->getIsbn();
+        }
         $query = "update produtos set nome = '{$produto->getNome()}',preco = {$produto->getPreco()}, descricao = '{$produto->getDescricao()}', categoria_id = {$produto->getCategoria()->getId()}, usado = {$produto->getUsado()} , isbn = '{$isbn}' tipoProduto = '{$tipoProduto}' where id = '{$produto->getId()}'";
         return mysqli_query($this->conexao, $query);
         var_dump($produto);

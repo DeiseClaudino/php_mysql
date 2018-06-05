@@ -18,7 +18,7 @@ if (array_key_exists('usado', $_POST)) {
     $usado = "false";
 }
 if($tipoProduto == "Livro"){
-  $produto = new Livro($nome, $preco, $descricao, $categoria, $usado)
+  $produto = new Livro($nome, $preco, $descricao, $categoria, $usado);
   $produto->setIsbn($isbn);
 }else{
   $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
