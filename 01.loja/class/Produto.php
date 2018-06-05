@@ -28,6 +28,14 @@ class Produto
         return $this->preco;
     }
 
+    public function calculaImposto($value='')
+    {
+        if ($this->temIsbn()) {
+            return $this->preco * 0.065;
+        } else {
+            return $this->preco * 0.195;
+        }
+    }
     public function temIsbn()
     {
         return $this instanceof Livro;
