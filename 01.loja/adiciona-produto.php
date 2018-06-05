@@ -17,12 +17,16 @@ if (array_key_exists('usado', $_POST)) {
 } else {
     $usado = "false";
 }
+if($tipoProduto == "Livro"){
+  $produto = new Livro($nome, $preco, $descricao, $categoria, $usado)
+  $produto->setIsbn($isbn);
+}else{
+  $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
+}
 
-$produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
-$produto->setIsbn($isbn);
-$produto->setTipoProduto($tipoProduto);
 
 $produtoDao = new ProdutoDao($conexao);
+
 if ($produtoDao->insereProduto($produto)) {
     ?>
   <p class="text-success">
