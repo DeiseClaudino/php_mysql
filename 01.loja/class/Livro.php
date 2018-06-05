@@ -3,9 +3,6 @@
 class Livro extends Produto
 {
     private $isbn;
-    private $taxaImpressao;
-    private $waterMark;
-
     public function getIsbn()
     {
         return $this->isbn;
@@ -19,28 +16,5 @@ class Livro extends Produto
     public function calculaImposto()
     {
         return $this->getPreco() * 0.065;
-    }
-
-    public function getTaxaImpressao()
-    {
-        return $this->taxaImpressao;
-    }
-
-
-    public function setTaxaImpressao($taxaImpressao)
-    {
-        return $this->taxaImpressao = $taxaImpressao;
-    }
-
-
-    public function getWatermark()
-    {
-        return $this->waterMark;
-    }
-
-
-    public function setWatermark($waterMark)
-    {
-        return $this->waterMark = $waterMark;
     }
 }
