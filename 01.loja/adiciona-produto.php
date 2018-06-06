@@ -1,18 +1,20 @@
-<?php require_once 'cabecalho.php';
+<?php
+
+require_once 'cabecalho.php';
 require_once 'logica-usuario.php';
 
 verificaUsuario();
 
-$categoria= new Categoria();
 $categoria->setId($_POST["categoria_id"]);
 $tipoProduto = $_POST['tipoProduto'];
-$taxaImpressao = $_POST['taxaImpressao'];
-$watermark = $_POST['watermark'];
+
 $criadorDeProdutos = new CriadorDeProdutos();
 $produto = $criadorDeProdutos->criaPor($tipoProduto, $_POST);
+$tipoProduto = $_POST['tipoProduto'];
 
 $factory = new Factory();
 $produto = $factory->criaPor($tipoProduto, $_POST);
+
 $produto = atualizaBaseadoEm($_POST);
 if ($produto->temIsbn()) {
   $produto->setIsbn($isbn);
@@ -47,7 +49,6 @@ if ($produtoDao->insereProduto($produto)) {
    </p>
 <?php
     }
-#faz a inserção dos dados no banco.
 ?>
 
 <?php include("rodape.php"); ?>

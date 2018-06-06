@@ -11,27 +11,37 @@ class ProdutoDao
     public function listaProdutos()
     {
         $produtos = array();
-        $resultado = mysqli_query($this->conexao, "select p.*,c.nome as categoria_nome from produtos as p join categorias as c on c.id = p.categoria_id");
-        while ($produto_array = mysqli_fetch_assoc($resultado)) {
-            $categoria = new Categoria();
-            $categoria->setNome($produto_array['categoria_nome']);
-            $produto_id = $produto_array['id'];
-            $nome = $produto_array['nome'];
-            $preco = $produto_array['preco'];
-            $descricao = $produto_array['descricao'];
-            $usado = $produto_array['usado'];
-            $isbn = $produto_array['isbn'];
-            $tipoProduto = $produto_array['tipoProduto'];
-            if ($tipoProduto == "Livro") {
-                $produto = new Livro($nome, $preco, $descricao, $categoria, $usado);
-                $produto->setIsbn($isbn);
-            } else {
-                $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
-            }
-            $produto->setId($produto_id);
 
-            array_push($produtos, $produto);
+        $resultado = $this->conexao->query(
+          'SELECT p.*, c.nome AS categoria_nome FROM produtos AS p JOIN categorias AS c ON c.id = p.categoria_id',
+          PDO::FETCH_ASSOC
+        );
+
+
+        foreach ($resultado as $linha) {
+          $categoria = new Categoria();
+          $categoria->setId($linha['categoria_id']);
+          $categoria->setNome($linha['categoria_nome']);
+
+          $produto_id = $linha['id'];
+          $nome = $linha['nome'];
+          $preco = $linha['preco'];
+          $descricao = $linha['descricao'];
+          $usado = $linha['usado'];
+          $isbn = $linha['isbn'];
+          $tipoProduto = $linha['tipoProduto'];
+
+          if ($tipoProduto == "Livro") {
+              $produto = new Livro($nome, $preco, $descricao, $categoria, $usado);
+              $produto->setIsbn($isbn);
+          } else {
+              $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
+          }
+          $produto->setId($produto_id);
+
+          array_push($produtos, $produto);
         }
+
         return $produtos;
     }
 

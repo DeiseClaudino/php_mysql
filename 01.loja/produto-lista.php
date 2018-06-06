@@ -4,11 +4,21 @@ require_once 'cabecalho.php';
 ?>
 <h1>Lista de Produtos</h1>
 <table class="table table-striped table-bordered">
+    <tr>
+      <th>Nome</th>
+      <th>Preço</th>
+      <th>Imposto</th>
+      <th>Descrição</th>
+      <th>Categoria</th>
+      <th>ISBN</th>
+      <th colspan="2">Ações</th>
+    </tr>
     <?php
     $produtoDao = new ProdutoDao($conexao);
     $produtos = $produtoDao->listaProdutos();
     foreach ($produtos as $produto) :
     ?>
+
         <tr>
             <td><?= $produto->getNome() ?></td>
             <td><?= $produto->getPreco() ?></td>
