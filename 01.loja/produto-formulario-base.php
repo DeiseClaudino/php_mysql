@@ -50,7 +50,7 @@
             <?php
             $tipos = array("Produto", "Livro Fisico", "Ebook");
             foreach ($tipos as $tipo) :
-              $tipoSemEspaco = str_replace('', '', $tipo);
+              $tipoSemEspaco = str_replace(" ", "", $tipo);
                 $esseEhOTipo = get_class($produto) == $tipoSemEspaco;
                 $selecao = $esseEhOTipo ? "selected='selected'" : "";
             ?>
