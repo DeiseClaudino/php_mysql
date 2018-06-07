@@ -30,8 +30,8 @@ class Produto
 
     public function calculaImposto()
     {
-            return $this->preco * 0.195;
-        }
+        return $this->preco * 0.195;
+    }
 
     public function temIsbn()
     {
@@ -48,20 +48,8 @@ class Produto
         return $this instanceof Ebook;
     }
 
-    public function atualizaBaseadoEm($params)
-    {
-      if ($this->temIsbn()) {
-        $this->setIsbn($params["isbn"]);
-      }
+    abstract public function atualizaBaseadoEm($params);
 
-      if ($this->temTaxaImpressao()) {
-        $this->setTaxaImpressao($params["taxaImpressao"]);
-      }
-
-      if ($this->temWaterMark()) {
-        $this->setWaterMark($params["watermark"]);
-      }
-    }
 
     public function getId()
     {
