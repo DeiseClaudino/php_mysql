@@ -13,9 +13,6 @@ $produto->atualizaBaseadoEm($_POST);
 
 $produtoDao = new ProdutoDao($conexao);
 
-var_dump($produtoDao);
-exit();
-
 if ($produtoDao->insereProduto($produto)) {
     ?>
   <p class="text-success">
@@ -24,12 +21,11 @@ if ($produtoDao->insereProduto($produto)) {
 
 <?php
 } else {
-        $msg = mysqli_error($conexao); ?>
+        ?>
 
    <p class="text-danger">
-       Produto <?= $produto->getNome() ?>  não adicionado! <?= $msg?>
-   </p>
-<?php
+       Produto <?= $produto->getNome() ?>  não adicionado!   </p>
+       <?php
     }
 ?>
 

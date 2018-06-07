@@ -52,12 +52,16 @@ class ProdutoDao
 
 
         $tipoProduto = get_class($produto);
+
         $resultadoDaInsercao = $this->conexao->query(
-          "INSERT INTO produtos(nome,preco, descricao, categoria_id, usado, isbn, tipoProduto, taxaImpressao, WaterMark) VALUES ('{$produto->getNome()}', {$produto->getPreco()}, '{$produto->getDescricao()}', {$produto->getCategoria()->getId()}, {$produto->getUsado()},  '{$isbn}', '{$tipoProduto}', '{$taxaImpressao}', '{$waterMark}')",
+          "INSERT INTO produtos(nome,preco, descricao, categoria_id, usado,
+            isbn, tipoProduto, taxaImpressao, WaterMark)
+            VALUES ('{$produto->getNome()}', {$produto->getPreco()},
+            '{$produto->getDescricao()}', {$produto->getCategoria()->getId()},
+            {$produto->getUsado()},  '{$isbn}', '{$tipoProduto}', '{$taxaImpressao}', '{$waterMark}')",
           PDO::FETCH_ASSOC
         );
-        //$query = "insert into produtos(nome,preco, descricao, categoria_id, usado, isbn, tipoProduto, taxaImpressao, WaterMark) values ('{$produto->getNome()}', {$produto->getPreco()}, '{$produto->getDescricao()}', {$produto->getCategoria()->getId()}, {$produto->getUsado()},  '{$isbn}', '{$tipoProduto}', '{$taxaImpressao}', '{$waterMark}')";
-        //$resultadoDaInsercao = mysqli_query($this->conexao, $query);
+        var_dump($resultadoDaInsercao);die;
         return $resultadoDaInsercao;
     }
 
