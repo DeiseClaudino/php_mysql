@@ -15,7 +15,7 @@ class ProdutoFactory
         if (in_array($tipoProduto, $this->classes)) {
             return new $tipoProduto($nome, $preco, $descricao, $categoria, $usado);
         } else {
-            return new Produto($nome, $preco, $descricao, $categoria, $usado);
+            return new LivroFisico($nome, $preco, $descricao, $categoria, $usado);
         }
     }
 }
