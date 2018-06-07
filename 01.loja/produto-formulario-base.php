@@ -60,11 +60,12 @@
                 <option value="<?=$tipoSemEspaco?>" <?=$selecao?>>
                     <?=$tipo?>
                 </option>
-                </optgroup>
 
             <?php
             endforeach
             ?>
+          </optgroup>
+
         </select>
     </td>
 </tr>
