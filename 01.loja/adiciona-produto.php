@@ -5,24 +5,20 @@ require_once 'logica-usuario.php';
 
 verificaUsuario();
 
-$categoria = new Categoria();
-$categoria->setId($_POST["categoria_id"]);
-
 $tipoProduto = $_POST['tipoProduto'];
-
-if (array_key_exists('usado', $_POST)) {
-    $produtosetUsado = "true";
-} else {
-    $produtosetUsado = "false";
-}
-
-$criadorDeProdutos = new CriadorDeProdutos();
-$produto = $criadorDeProdutos->criaPor($tipoProduto, $_POST);
-$produto = atualizaBaseadoEm($_POST);
+$categoria_id = $_POST['categoria_id'];
 
 $factory = new ProdutoFactory();
 $produto = $factory->criaPor($tipoProduto, $_POST);
+$produto->atualizaBaseadoEm($_POST);
 
+$produto->getCategoria->setId($categoria_id);
+
+if (array_key_exists('usado', $_POST)) {
+    $produto->setUsado("true");
+} else {
+    $produto->setUsado("false");
+}
 
 
 $produtoDao = new ProdutoDao($conexao);

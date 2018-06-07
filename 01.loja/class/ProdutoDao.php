@@ -19,27 +19,16 @@ class ProdutoDao
 
 
         foreach ($resultado as $linha) {
-          $categoria = new Categoria();
-          $categoria->setId($linha['categoria_id']);
-          $categoria->setNome($linha['categoria_nome']);
+            $tipoProduto = $linha['tipoProduto'];
 
-          $produto_id = $linha['id'];
-          $nome = $linha['nome'];
-          $preco = $linha['preco'];
-          $descricao = $linha['descricao'];
-          $usado = $linha['usado'];
-          $isbn = $linha['isbn'];
-          $tipoProduto = $linha['tipoProduto'];
+            $factory = new ProdutoFactory();
+            $produto = $factory->criaPor($tipoProduto, $linha);
+            $produto->atualizaBaseadoEm($linha);
+            $produto->setId($linha['id']);
+            $produto->getCategoria()->setNome($linha['categoria_nome']);
 
-          if ($tipoProduto == "Livro") {
-              $produto = new Livro($nome, $preco, $descricao, $categoria, $usado);
-              $produto->setIsbn($isbn);
-          } else {
-              $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
-          }
-          $produto->setId($produto_id);
 
-          array_push($produtos, $produto);
+            array_push($produtos, $produto);
         }
 
         return $produtos;
