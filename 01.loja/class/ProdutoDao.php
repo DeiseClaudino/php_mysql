@@ -52,8 +52,12 @@ class ProdutoDao
 
 
         $tipoProduto = get_class($produto);
-        $query = "insert into produtos(nome,preco, descricao, categoria_id, usado, isbn, tipoProduto, taxaImpressao, WaterMark) values ('{$produto->getNome()}', {$produto->getPreco()}, '{$produto->getDescricao()}', {$produto->getCategoria()->getId()}, {$produto->getUsado()},  '{$isbn}', '{$tipoProduto}', '{$taxaImpressao}', '{$waterMark}')";
-        $resultadoDaInsercao = mysqli_query($this->conexao, $query);
+        $resultadoDaInsercao = $this->conexao->query(
+          "INSERT INTO produtos(nome,preco, descricao, categoria_id, usado, isbn, tipoProduto, taxaImpressao, WaterMark) VALUES ('{$produto->getNome()}', {$produto->getPreco()}, '{$produto->getDescricao()}', {$produto->getCategoria()->getId()}, {$produto->getUsado()},  '{$isbn}', '{$tipoProduto}', '{$taxaImpressao}', '{$waterMark}')",
+          PDO::FETCH_ASSOC
+        );
+        //$query = "insert into produtos(nome,preco, descricao, categoria_id, usado, isbn, tipoProduto, taxaImpressao, WaterMark) values ('{$produto->getNome()}', {$produto->getPreco()}, '{$produto->getDescricao()}', {$produto->getCategoria()->getId()}, {$produto->getUsado()},  '{$isbn}', '{$tipoProduto}', '{$taxaImpressao}', '{$waterMark}')";
+        //$resultadoDaInsercao = mysqli_query($this->conexao, $query);
         return $resultadoDaInsercao;
     }
 
@@ -65,9 +69,14 @@ class ProdutoDao
 
     public function buscaProduto($id)
     {
-        $query = "select * from produtos where id = {$id}";
+        $produto_buscado = $this->conexao->query(
+        "select * from produtos where id = {$id}",
+        PDO::FETCH_ASSOC
+      );
+
+        //$query = "select * from produtos where id = {$id}";
         $resultado = mysqli_query($this->conexao, $query);
-        $produto_buscado = mysqli_fetch_assoc($resultado);
+      //  $produto_buscado = mysqli_fetch_assoc($resultado);
 
         $categoria = new Categoria();
         $categoria_id = $produto_buscado['categoria_id'];
@@ -89,7 +98,13 @@ class ProdutoDao
         if ($produto->temIsbn()) {
             $isbn = $produto->getIsbn();
         }
-        $query = "update produtos set nome = '{$produto->getNome()}',preco = {$produto->getPreco()}, descricao = '{$produto->getDescricao()}', categoria_id = {$produto->getCategoria()->getId()}, usado = {$produto->getUsado()} , isbn = '{$isbn}' tipoProduto = '{$tipoProduto}' where id = '{$produto->getId()}'";
+        $query = $this->conexao->query(
+        "update produtos set nome = '{$produto->getNome()}',preco = {$produto->getPreco()}, descricao = '{$produto->getDescricao()}', categoria_id = {$produto->getCategoria()->getId()}, usado = {$produto->getUsado()} , isbn = '{$isbn}' tipoProduto = '{$tipoProduto}' where id = '{$produto->getId()}'",
+
+        PDO::FETCH_ASSOC
+      );
+
+      //  $query = "update produtos set nome = '{$produto->getNome()}',preco = {$produto->getPreco()}, descricao = '{$produto->getDescricao()}', categoria_id = {$produto->getCategoria()->getId()}, usado = {$produto->getUsado()} , isbn = '{$isbn}' tipoProduto = '{$tipoProduto}' where id = '{$produto->getId()}'";
         return mysqli_query($this->conexao, $query);
         var_dump($produto);
         die();

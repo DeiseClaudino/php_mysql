@@ -30,17 +30,19 @@
 <tr>
     <td>Categoria</td>
     <td>
-        <select name="categoria_id" class="form-control">
-            <?php
+      <select name="categoria_id" class="form-control">
+  			<?php
             foreach ($categorias as $categoria) :
                 $essaEhACategoria = $produto->getCategoria()->getId() == $categoria->getId();
                 $selecao = $essaEhACategoria ? "selected='selected'" : "";
             ?>
-                <option value="<?=$categoria->getId()?>" <?=$selecao?>>
-                    <?=$categoria->getNome()?>
-                </option>
-            <?php endforeach ?>
-        </select>
+  				<option value="<?=$categoria->getId()?>" <?=$selecao?>>
+  					<?=$categoria->getNome()?>
+  				</option>
+  			<?php
+            endforeach
+            ?>
+  		</select>
     </td>
 </tr>
 <tr>
@@ -90,14 +92,18 @@
 <tr>
   <td>Taxa de Impressão (caso seja um Livro Físico)</td>
   <td>
-    <input type="text" class="form-control" name="taxaImpressao" value="<?php if($produto->temTaxaImpressao()){echo $produto->getTaxaImpressao(); } ?>">
+    <input type="text" class="form-control" name="taxaImpressao" value="<?php if ($produto->temTaxaImpressao()) {
+                echo $produto->getTaxaImpressao();
+            } ?>">
   </td>
 
 </tr>
 <tr>
   <td>WaterMark (caso seja um Ebook)</td>
   <td>
-    <input type="text" class="form-control" name="WaterMark" value="<?php if($produto->temWaterMark()){echo $produto->getWaterMark(); } ?>">
+    <input type="text" class="form-control" name="WaterMark" value="<?php if ($produto->temWaterMark()) {
+                echo $produto->getWaterMark();
+            } ?>">
   </td>
 
 </tr>
