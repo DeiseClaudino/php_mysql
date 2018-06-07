@@ -1,15 +1,17 @@
 <?php
   require_once 'cabecalho.php';
-  require_once 'banco-categoria.php';
   require_once 'logica-usuario.php';
 
+
   verificaUsuario();
+
   $categoriaDao = new CategoriaDao($conexao);
   $categorias = $categoriaDao->listaCategorias();
   $categoria = new Categoria();
   $categoria->setId(1);
   $produto = new LivroFisico("", "", "", $categoria, "");
     ?>
+
 
   <h1>Formulário de cadastro</h1>
   <form action="adiciona-produto.php" method="post">

@@ -9,18 +9,16 @@ class CategoriaDao
     function listaCategorias()
     {
         $categorias = array();
-        //$query = "select * from categorias";
-          $query= $this->conexao->query(
+
+          $resultado= $this->conexao->query(
           "SELECT * FROM categorias",
           PDO::FETCH_ASSOC
         );
-          $resultado = $this->conexao->quote($query);
-          foreach ($query as $categorias) {
 
-      //  while ($categoria_array = mysqli_fetch_assoc($resultado)) {
+          foreach ($resultado as $linha) {
             $categoria = new Categoria();
-            $categoria->setId($lista['id']);
-            $categoria->setNome($lista['nome']);
+            $categoria->setId($linha['id']);
+            $categoria->setNome($linha['nome']);
 
             array_push($categorias, $categoria);
         }

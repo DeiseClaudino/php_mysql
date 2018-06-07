@@ -33,7 +33,9 @@
       <select name="categoria_id" class="form-control">
   			<?php
             foreach ($categorias as $categoria) :
+
                 $essaEhACategoria = $produto->getCategoria()->getId() == $categoria->getId();
+
                 $selecao = $essaEhACategoria ? "selected='selected'" : "";
             ?>
   				<option value="<?=$categoria->getId()?>" <?=$selecao?>>
