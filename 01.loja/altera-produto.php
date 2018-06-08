@@ -11,13 +11,13 @@ $preco = $_POST['preco'];
 $descricao = $_POST['descricao'];
 
 if (array_key_exists('usado', $_POST)) {
-    $usado = "true";
+    $usado = true;
 } else {
-    $usado = "false";
+    $usado = false;
 }
 
 
-$produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
+$produto = new $tipoProduto($nome, $preco, $descricao, $categoria, $usado);
 $produto->setId($_POST['id']);
 $produtoDao = new ProdutoDao($conexao);
 
@@ -32,7 +32,7 @@ if ($produtoDao->alteraProduto($produto)) {
    <p class="text-danger">Produto <?= $produto->getNome()?>  não alterado! <?= $msg?></p>
 <?php
     }
-#faz a inserção dos dados no banco.
+
         ?>
 
 <?php include("rodape.php"); ?>

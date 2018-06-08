@@ -3,10 +3,11 @@ class ProdutoDao
 {
     private $conexao;
 
-    public function __construct($conexao)
+    function __construct($conexao)
     {
         $this->conexao = $conexao;
     }
+
     public function listaProdutos()
     {
         $produtos = array();
@@ -71,7 +72,7 @@ class ProdutoDao
         ";
 
         if (false === $this->conexao->exec($resultadoDaInsercao)) {
-          printf(
+            printf(
             'PDO::errorInfo(): %s (SQL: %s)',
             print_r($this->conexao->errorInfo(), true),
             $resultadoDaInsercao
@@ -90,10 +91,7 @@ class ProdutoDao
 
     public function buscaProduto($id)
     {
-        $produto_buscado = $this->conexao->query(
-        "SELECT * FROM produtos WHERE id = {$id}",
-        PDO::FETCH_ASSOC
-      );
+        $produto_buscado =  "SELECT * FROM produtos WHERE id = {$id}";
 
         $resultado = $this->conexao->query($produto_buscado);
 
@@ -105,7 +103,10 @@ class ProdutoDao
         $descricao = $produto_buscado['descricao'];
         $usado = $produto_buscado['usado'];
 
-        $produto = new Produto($nome, $preco, $descricao, $categoria, $usado);
+        $tipoProduto = $produto_buscado['tipoProduto'];
+        $factory = new ProdutoFactory();
+        $produto = $factory->criaPor($tipoProduto, $linha);
+        $produto->atualizaBaseadoEm($produto_buscado);
         $produto->setId($produto_buscado['id']);
 
         return $produto;
@@ -119,10 +120,15 @@ class ProdutoDao
         }
 
         return $query = $this->conexao->exec(
-        "UPDATE produtos SET nome = '{$produto->getNome()}',preco = {$produto->getPreco()},
-        descricao = '{$produto->getDescricao()}', categoria_id = {$produto->getCategoria()->getId()},
-         usado = {$produto->getUsado()} , isbn = '{$isbn}' tipoProduto = '{$tipoProduto}'
-         WHERE id = '{$produto->getId()}'"
+        "UPDATE produtos SET
+        nome = '{$produto->getNome()}',
+        preco = {$produto->getPreco()},
+        descricao = '{$produto->getDescricao()}',
+        categoria_id = {$produto->getCategoria()->getId()},
+        usado = {$produto->getUsado()} ,
+        isbn = '{$isbn}',
+        tipoProduto = '{$tipoProduto}'
+        WHERE id = '{$produto->getId()}'"
         );
     }
 }
