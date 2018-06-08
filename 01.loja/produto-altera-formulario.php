@@ -8,6 +8,7 @@ $produto = $produtoDao->buscaProduto($id);
 $categorias = $categoriaDao->listaCategorias();
 
 $usado = $produto->getUsado() ? "checked = 'checked'" : "";
+$produto->setUsado($usado);
 
 ?>
 
