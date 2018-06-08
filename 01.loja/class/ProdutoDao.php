@@ -8,23 +8,23 @@ class ProdutoDao
         $this->conexao = $conexao;
     }
     public function listaProdutos()
-       {
-           $produtos = array();
-           $resultado = $this->conexao->query(
+    {
+        $produtos = array();
+        $resultado = $this->conexao->query(
              'SELECT p.*, c.nome AS categoria_nome FROM produtos AS p JOIN categorias AS c ON c.id = p.categoria_id',
              PDO::FETCH_ASSOC
            );
-           foreach ($resultado as $linha) {
-               $tipoProduto = $linha['tipoProduto'];
-               $factory = new ProdutoFactory();
-               $produto = $factory->criaPor($tipoProduto, $linha);
-               $produto->atualizaBaseadoEm($linha);
-               $produto->setId($linha['id']);
-               $produto->getCategoria()->setNome($linha['categoria_nome']);
-               array_push($produtos, $produto);
-           }
-           return $produtos;
-       }
+        foreach ($resultado as $linha) {
+            $tipoProduto = $linha['tipoProduto'];
+            $factory = new ProdutoFactory();
+            $produto = $factory->criaPor($tipoProduto, $linha);
+            $produto->atualizaBaseadoEm($linha);
+            $produto->setId($linha['id']);
+            $produto->getCategoria()->setNome($linha['categoria_nome']);
+            array_push($produtos, $produto);
+        }
+        return $produtos;
+    }
 
     public function insereProduto(Produto $produto)
     {
@@ -43,25 +43,25 @@ class ProdutoDao
 
 
         $tipoProduto = get_class($produto);
-
         $resultadoDaInsercao = $this->conexao->query(
           "INSERT INTO produtos(nome,preco, descricao, categoria_id, usado,
             isbn, tipoProduto, taxaImpressao, WaterMark)
             VALUES ('{$produto->getNome()}', {$produto->getPreco()},
             '{$produto->getDescricao()}', {$produto->getCategoria()->getId()},
             {$produto->getUsado()},  '{$isbn}', '{$tipoProduto}', '{$taxaImpressao}', '{$waterMark}')",
-          PDO::FETCH_ASSOC
-        );
-        var_dump($resultadoDaInsercao);die;
+            PDO::FETCH_ASSOC
+
+      );
+
         return $resultadoDaInsercao;
     }
 
     public function removeProduto($id)
     {
-      return $query = $this->conexao->query(
-        "DELETE FROM produtos WHERE id = {$id}");
-
-          }
+        return $query = $this->conexao->query(
+        "DELETE FROM produtos WHERE id = {$id}"
+      );
+    }
 
     public function buscaProduto($id)
     {
@@ -69,7 +69,7 @@ class ProdutoDao
         "SELECT * FROM produtos WHERE id = {$id}",
         PDO::FETCH_ASSOC
       );
-        $resultado = mysqli_query($this->conexao, $produto_buscadox);
+        $resultado = $this->conexao->query($produto_buscado);
 
 
         $categoria = new Categoria();
@@ -96,6 +96,5 @@ class ProdutoDao
         "UPDATE produtos SET nome = '{$produto->getNome()}',preco = {$produto->getPreco()}, descricao = '{$produto->getDescricao()}', categoria_id = {$produto->getCategoria()->getId()}, usado = {$produto->getUsado()} , isbn = '{$isbn}' tipoProduto = '{$tipoProduto}' WHERE id = '{$produto->getId()}'",
         PDO::FETCH_ASSOC
       );
-
     }
 }
