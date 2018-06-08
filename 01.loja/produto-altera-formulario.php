@@ -1,12 +1,12 @@
 <?php require_once 'cabecalho.php';
 
 $id = $_GET['id'];
-$produtoDao = new ProdutoDao($conexao);
+$produtoDao = new ProdutoDao();
 $produto = $produtoDao->buscaProduto($id);
-$categoriaDao = new CategoriaDao($conexao);
+$categoriaDao = new CategoriaDao();
 $categorias = $categoriaDao->listaCategorias();
 $usado = $produto->getUsado() ? "checked = 'checked'" : "";
-  ##cadastro para alteação dos produtos já existentes
+
 ?>
 
 <h1>Alterando Produto</h1>

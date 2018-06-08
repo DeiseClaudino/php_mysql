@@ -41,17 +41,42 @@ class ProdutoDao
             $waterMark = $produto->getWaterMark();
         }
 
-
         $tipoProduto = get_class($produto);
-        $resultadoDaInsercao = $this->conexao->query(
-          "INSERT INTO produtos(nome,preco, descricao, categoria_id, usado,
-            isbn, tipoProduto, taxaImpressao, WaterMark)
-            VALUES ('{$produto->getNome()}', {$produto->getPreco()},
-            '{$produto->getDescricao()}', {$produto->getCategoria()->getId()},
-            {$produto->getUsado()},  '{$isbn}', '{$tipoProduto}', '{$taxaImpressao}', '{$waterMark}')",
-            PDO::FETCH_ASSOC
 
-      );
+        $usado = (int)$produto->getUsado();
+
+        $resultadoDaInsercao = "
+          INSERT INTO
+            produtos(
+              nome,
+              preco,
+              descricao,
+              categoria_id,
+              usado,
+              isbn,
+              tipoProduto,
+              TaxaImpressao,
+              waterMark
+            ) VALUES (
+              {$this->conexao->quote($produto->getNome())},
+              {$this->conexao->quote($produto->getPreco())},
+              {$this->conexao->quote($produto->getDescricao())},
+              {$this->conexao->quote($produto->getCategoria()->getId())},
+              {$usado},
+              {$this->conexao->quote($isbn)},
+              {$this->conexao->quote($tipoProduto)},
+              {$this->conexao->quote($taxaImpressao)},
+              {$this->conexao->quote($waterMark)}
+            )
+        ";
+
+        if (false === $this->conexao->exec($resultadoDaInsercao)) {
+          printf(
+            'PDO::errorInfo(): %s (SQL: %s)',
+            print_r($this->conexao->errorInfo(), true),
+            $resultadoDaInsercao
+          );
+        }
 
         return $resultadoDaInsercao;
     }
@@ -69,8 +94,8 @@ class ProdutoDao
         "SELECT * FROM produtos WHERE id = {$id}",
         PDO::FETCH_ASSOC
       );
-        $resultado = $this->conexao->query($produto_buscado);
 
+        $resultado = $this->conexao->query($produto_buscado);
 
         $categoria = new Categoria();
         $categoria_id = $produto_buscado['categoria_id'];
@@ -92,9 +117,12 @@ class ProdutoDao
         if ($produto->temIsbn()) {
             $isbn = $produto->getIsbn();
         }
-        return $query = $this->conexao->query(
-        "UPDATE produtos SET nome = '{$produto->getNome()}',preco = {$produto->getPreco()}, descricao = '{$produto->getDescricao()}', categoria_id = {$produto->getCategoria()->getId()}, usado = {$produto->getUsado()} , isbn = '{$isbn}' tipoProduto = '{$tipoProduto}' WHERE id = '{$produto->getId()}'",
-        PDO::FETCH_ASSOC
-      );
+
+        return $query = $this->conexao->exec(
+        "UPDATE produtos SET nome = '{$produto->getNome()}',preco = {$produto->getPreco()},
+        descricao = '{$produto->getDescricao()}', categoria_id = {$produto->getCategoria()->getId()},
+         usado = {$produto->getUsado()} , isbn = '{$isbn}' tipoProduto = '{$tipoProduto}'
+         WHERE id = '{$produto->getId()}'"
+        );
     }
 }
