@@ -7,33 +7,24 @@ class ProdutoDao
     {
         $this->conexao = $conexao;
     }
-
     public function listaProdutos()
-    {
-        $produtos = array();
-
-        $resultado = $this->conexao->query(
-          'SELECT p.*, c.nome AS categoria_nome FROM produtos AS p JOIN categorias AS c ON c.id = p.categoria_id',
-          PDO::FETCH_ASSOC
-        );
-
-
-        foreach ($resultado as $linha) {
-            $tipoProduto = $linha['tipoProduto'];
-
-            $factory = new ProdutoFactory();
-            $produto = $factory->criaPor($tipoProduto, $linha);
-            $produto->atualizaBaseadoEm($linha);
-            $produto->setId($linha['id']);
-            $produto->getCategoria()->setNome($linha['categoria_nome']);
-
-
-            array_push($produtos, $produto);
-        }
-
-        return $produtos;
-    }
-
+       {
+           $produtos = array();
+           $resultado = $this->conexao->query(
+             'SELECT p.*, c.nome AS categoria_nome FROM produtos AS p JOIN categorias AS c ON c.id = p.categoria_id',
+             PDO::FETCH_ASSOC
+           );
+           foreach ($resultado as $linha) {
+               $tipoProduto = $linha['tipoProduto'];
+               $factory = new ProdutoFactory();
+               $produto = $factory->criaPor($tipoProduto, $linha);
+               $produto->atualizaBaseadoEm($linha);
+               $produto->setId($linha['id']);
+               $produto->getCategoria()->setNome($linha['categoria_nome']);
+               array_push($produtos, $produto);
+           }
+           return $produtos;
+       }
 
     public function insereProduto(Produto $produto)
     {
@@ -67,20 +58,19 @@ class ProdutoDao
 
     public function removeProduto($id)
     {
-        $query = "delete from produtos where id = {$id}";
-        return mysqli_query($conexao, $query);
-    }
+      return $query = $this->conexao->query(
+        "DELETE FROM produtos WHERE id = {$id}");
+
+          }
 
     public function buscaProduto($id)
     {
         $produto_buscado = $this->conexao->query(
-        "select * from produtos where id = {$id}",
+        "SELECT * FROM produtos WHERE id = {$id}",
         PDO::FETCH_ASSOC
       );
+        $resultado = mysqli_query($this->conexao, $produto_buscadox);
 
-        //$query = "select * from produtos where id = {$id}";
-        $resultado = mysqli_query($this->conexao, $query);
-      //  $produto_buscado = mysqli_fetch_assoc($resultado);
 
         $categoria = new Categoria();
         $categoria_id = $produto_buscado['categoria_id'];
@@ -102,16 +92,10 @@ class ProdutoDao
         if ($produto->temIsbn()) {
             $isbn = $produto->getIsbn();
         }
-        $query = $this->conexao->query(
-        "update produtos set nome = '{$produto->getNome()}',preco = {$produto->getPreco()}, descricao = '{$produto->getDescricao()}', categoria_id = {$produto->getCategoria()->getId()}, usado = {$produto->getUsado()} , isbn = '{$isbn}' tipoProduto = '{$tipoProduto}' where id = '{$produto->getId()}'",
-
+        return $query = $this->conexao->query(
+        "UPDATE produtos SET nome = '{$produto->getNome()}',preco = {$produto->getPreco()}, descricao = '{$produto->getDescricao()}', categoria_id = {$produto->getCategoria()->getId()}, usado = {$produto->getUsado()} , isbn = '{$isbn}' tipoProduto = '{$tipoProduto}' WHERE id = '{$produto->getId()}'",
         PDO::FETCH_ASSOC
       );
 
-      //  $query = "update produtos set nome = '{$produto->getNome()}',preco = {$produto->getPreco()}, descricao = '{$produto->getDescricao()}', categoria_id = {$produto->getCategoria()->getId()}, usado = {$produto->getUsado()} , isbn = '{$isbn}' tipoProduto = '{$tipoProduto}' where id = '{$produto->getId()}'";
-        return mysqli_query($this->conexao, $query);
-        var_dump($produto);
-        die();
     }
-    #Faz todas as operações entre o banco e a pagina
 }
