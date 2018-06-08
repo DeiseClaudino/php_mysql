@@ -1,14 +1,16 @@
 <?php
 require_once 'cabecalho.php';
 
+$tipoProduto = $_POST['tipoProduto'];
+$produto_id = $_POST['id'];
+$categoria_id = $_POST['categoria_id'];
 
-$categoria = new Categoria();
-$categoria->setId($_POST['categoria_id']);
+$factory = new ProdutoFactory();
+$produto = $factory->criaPor($tipoProduto, $_POST);
+$produto->atualizaBaseadoEm($_POST);
 
-
-$nome = $_POST['nome'];
-$preco = $_POST['preco'];
-$descricao = $_POST['descricao'];
+$produto->setId($produto_id);
+$produto->getCategoria()->setId($categoria_id);
 
 if (array_key_exists('usado', $_POST)) {
     $usado = true;
@@ -16,23 +18,17 @@ if (array_key_exists('usado', $_POST)) {
     $usado = false;
 }
 
-
-$produto = new $tipoProduto($nome, $preco, $descricao, $categoria, $usado);
-$produto->setId($_POST['id']);
 $produtoDao = new ProdutoDao($conexao);
 
 if ($produtoDao->alteraProduto($produto)) {
     ?>
-  <p class="text-success"> Produto <?= $produto->getNome(); ?>, <?= $produto->getPreco(); ?> alterado com sucesso!</p>
-
-    <?php
+	<p class="text-success">O produto <?= $produto->getNome() ?>, <?= $produto->getPreco() ?> foi alterado.</p>
+<?php
 } else {
-        $msg = mysqli_error($conexao); ?>
-
-   <p class="text-danger">Produto <?= $produto->getNome()?>  não alterado! <?= $msg?></p>
+        ?>
+	<p class="text-danger">O produto <?= $produto->getNome() ?> não foi alterado: </p>
 <?php
     }
-
-        ?>
+?>
 
 <?php include("rodape.php"); ?>

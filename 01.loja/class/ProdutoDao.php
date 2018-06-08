@@ -3,7 +3,7 @@ class ProdutoDao
 {
     private $conexao;
 
-    function __construct($conexao)
+    public function __construct($conexao)
     {
         $this->conexao = $conexao;
     }
@@ -92,22 +92,19 @@ class ProdutoDao
     public function buscaProduto($id)
     {
         $produto_buscado =  "SELECT * FROM produtos WHERE id = {$id}";
+        $resultado = $this->conexao->query($produto_buscado, PDO::FETCH_ASSOC);
 
-        $resultado = $this->conexao->query($produto_buscado);
-
-        $categoria = new Categoria();
-        $categoria_id = $produto_buscado['categoria_id'];
-
-        $nome = $produto_buscado['nome'];
-        $preco = $produto_buscado['preco'];
-        $descricao = $produto_buscado['descricao'];
-        $usado = $produto_buscado['usado'];
 
         $tipoProduto = $produto_buscado['tipoProduto'];
+        $produto_id = $produto_buscado['id'];
+        $categoria_id = $produto_buscado['categoria_id'];
+
         $factory = new ProdutoFactory();
-        $produto = $factory->criaPor($tipoProduto, $linha);
+        $produto = $factory->criaPor($tipoProduto, $produto_buscado);
         $produto->atualizaBaseadoEm($produto_buscado);
-        $produto->setId($produto_buscado['id']);
+
+        $produto->setId($produto_id);
+        $produto->getCategoria()->setId($categoria_id);
 
         return $produto;
     }
@@ -118,6 +115,18 @@ class ProdutoDao
         if ($produto->temIsbn()) {
             $isbn = $produto->getIsbn();
         }
+
+        $waterMark = "";
+        if ($produto->temWaterMark()) {
+            $waterMark = $produto->getWaterMark();
+        }
+
+        $taxaImpressao = "";
+        if ($produto->temTaxaImpressao()) {
+            $taxaImpressao = $produto->getTaxaImpressao();
+        }
+
+        $tipoProduto = get_class($produto);
 
         return $query = $this->conexao->exec(
         "UPDATE produtos SET
