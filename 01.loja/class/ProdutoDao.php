@@ -93,6 +93,8 @@ class ProdutoDao
     {
         $produto_buscado =  "SELECT * FROM produtos WHERE id = {$id}";
         $resultado = $this->conexao->query($produto_buscado, PDO::FETCH_ASSOC);
+        $lista = $resultado->fetchAll();
+        foreach ($lista as $produto) {
 
 
         $tipoProduto = $produto_buscado['tipoProduto'];
@@ -107,6 +109,7 @@ class ProdutoDao
         $produto->getCategoria()->setId($categoria_id);
 
         return $produto;
+      }
     }
 
     public function alteraProduto(Produto $produto)
