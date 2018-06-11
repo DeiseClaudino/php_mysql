@@ -91,25 +91,22 @@ class ProdutoDao
 
     public function buscaProduto($id)
     {
-        $produto_buscado =  "SELECT * FROM produtos WHERE id = {$id}";
-        $resultado = $this->conexao->query($produto_buscado, PDO::FETCH_ASSOC);
-        $lista = $resultado->fetchAll();
-        foreach ($lista as $produto) {
+        $lista =  "SELECT * FROM produtos WHERE id = {$id}";
+        $produto_buscado = $this->conexao->query($lista, PDO::FETCH_ASSOC);
+      //  $produto_buscado = $resultado->fetchAll();
 
+      foreach ($produto_buscado as $produto_buscado) {
+          $tipoProduto = $produto_buscado['tipoProduto'];
+          $factory = new ProdutoFactory();
+          $produto = $factory->criaPor($tipoProduto,$produto_buscado);
+          $produto->atualizaBaseadoEm($produto_buscado);
+          $produto->setId($produto_buscado['id']);
+          $produto->getCategoria()->setNome($produto_buscado['categoria_nome']);
 
-        $tipoProduto = $produto_buscado['tipoProduto'];
-        $produto_id = $produto_buscado['id'];
-        $categoria_id = $produto_buscado['categoria_id'];
-
-        $factory = new ProdutoFactory();
-        $produto = $factory->criaPor($tipoProduto, $produto_buscado);
-        $produto->atualizaBaseadoEm($produto_buscado);
-
-        $produto->setId($produto_id);
-        $produto->getCategoria()->setId($categoria_id);
+      }
 
         return $produto;
-      }
+
     }
 
     public function alteraProduto(Produto $produto)
