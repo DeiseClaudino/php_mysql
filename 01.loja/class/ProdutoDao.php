@@ -45,40 +45,39 @@ class ProdutoDao
         $tipoProduto = get_class($produto);
 
         $usado = (int)$produto->getUsado();
-
+        $categoria_id = (int)$produto->getCategoria()->getId();
         $resultadoDaInsercao = "
-          INSERT INTO
-            produtos(
-              nome,
-              preco,
-              descricao,
-              categoria_id,
-              usado,
-              isbn,
-              tipoProduto,
-              TaxaImpressao,
-              waterMark
-            ) VALUES (
-              {$this->conexao->quote($produto->getNome())},
-              {$this->conexao->quote($produto->getPreco())},
-              {$this->conexao->quote($produto->getDescricao())},
-              {$this->conexao->quote($produto->getCategoria()->getId())},
-              {$usado},
-              {$this->conexao->quote($isbn)},
-              {$this->conexao->quote($tipoProduto)},
-              {$this->conexao->quote($taxaImpressao)},
-              {$this->conexao->quote($waterMark)}
-            )
-        ";
+                   INSERT INTO
+                     produtos(
+                       nome,
+                       preco,
+                       descricao,
+                       categoria_id,
+                       usado,
+                       isbn,
+                       tipoProduto,
+                       TaxaImpressao,
+                       waterMark
+                     ) VALUES (
+                       {$this->conexao->quote($produto->getNome())},
+                       {$this->conexao->quote($produto->getPreco())},
+                       {$this->conexao->quote($produto->getDescricao())},
+                       {$this->conexao->quote($categoria_id)},
+                       {$usado},
+                       {$this->conexao->quote($isbn)},
+                       {$this->conexao->quote($tipoProduto)},
+                       {$this->conexao->quote($taxaImpressao)},
+                       {$this->conexao->quote($waterMark)}
+                     )
+                 ";
 
         if (false === $this->conexao->exec($resultadoDaInsercao)) {
             printf(
-            'PDO::errorInfo(): %s (SQL: %s)',
-            print_r($this->conexao->errorInfo(), true),
-            $resultadoDaInsercao
-          );
+                     'PDO::errorInfo(): %s (SQL: %s)',
+                     print_r($this->conexao->errorInfo(), true),
+                     $resultadoDaInsercao
+                   );
         }
-
         return $resultadoDaInsercao;
     }
 
@@ -93,20 +92,17 @@ class ProdutoDao
     {
         $lista =  "SELECT * FROM produtos WHERE id = {$id}";
         $produto_buscado = $this->conexao->query($lista, PDO::FETCH_ASSOC);
-      //  $produto_buscado = $resultado->fetchAll();
 
-      foreach ($produto_buscado as $produto_buscado) {
-          $tipoProduto = $produto_buscado['tipoProduto'];
-          $factory = new ProdutoFactory();
-          $produto = $factory->criaPor($tipoProduto,$produto_buscado);
-          $produto->atualizaBaseadoEm($produto_buscado);
-          $produto->setId($produto_buscado['id']);
-          $produto->getCategoria()->setNome($produto_buscado['categoria_nome']);
 
-      }
+        foreach ($produto_buscado as $produto_buscado) {
+            $tipoProduto = $produto_buscado['tipoProduto'];
+            $factory = new ProdutoFactory();
+            $produto = $factory->criaPor($tipoProduto, $produto_buscado);
+            $produto->atualizaBaseadoEm($produto_buscado);
+            $produto->setId($produto_buscado['id']);
+        }
 
         return $produto;
-
     }
 
     public function alteraProduto(Produto $produto)
@@ -138,6 +134,6 @@ class ProdutoDao
         isbn = '{$isbn}',
         tipoProduto = '{$tipoProduto}'
         WHERE id = '{$produto->getId()}'"
-        );
+      );
     }
 }
