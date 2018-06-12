@@ -13,9 +13,9 @@ $produto->setId($produto_id);
 $produto->getCategoria()->setId($categoria_id);
 
 if (array_key_exists('usado', $_POST)) {
-    $usado = true;
+    $produto->setUsado("true");
 } else {
-    $usado = false;
+    $produto->setUsado("false");
 }
 
 $produtoDao = new ProdutoDao($conexao);
