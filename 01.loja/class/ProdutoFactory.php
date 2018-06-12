@@ -9,7 +9,10 @@ class ProdutoFactory
         $nome = $params['nome'];
         $preco = $params['preco'];
         $descricao = $params['descricao'];
+
         $categoria = new Categoria();
+        $categoria->setId($params['categoria_id']);
+
         $usado = $params['usado'];
 
         if (in_array($tipoProduto, $this->classes)) {

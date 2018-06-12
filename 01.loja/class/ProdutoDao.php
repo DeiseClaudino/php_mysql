@@ -44,8 +44,11 @@ class ProdutoDao
 
         $tipoProduto = get_class($produto);
 
+
         $usado = (int)$produto->getUsado();
-        $categoria_id = (int)$produto->getCategoria()->getId();
+        $categoriaId = $produto->getCategoria()->getId();
+
+
         $resultadoDaInsercao = "
                    INSERT INTO
                      produtos(
@@ -62,7 +65,7 @@ class ProdutoDao
                        {$this->conexao->quote($produto->getNome())},
                        {$this->conexao->quote($produto->getPreco())},
                        {$this->conexao->quote($produto->getDescricao())},
-                       {$this->conexao->quote($categoria_id)},
+                       {$categoriaId},
                        {$usado},
                        {$this->conexao->quote($isbn)},
                        {$this->conexao->quote($tipoProduto)},
