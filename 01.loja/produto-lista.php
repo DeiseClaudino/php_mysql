@@ -29,7 +29,7 @@ require_once 'cabecalho.php';
             <td>
               <?php
               if ($produto->temIsbn()) {
-                  echo "ISBN:" .$produto->getIsbn();
+                  echo "" .$produto->getIsbn();
               }
                ?>
 

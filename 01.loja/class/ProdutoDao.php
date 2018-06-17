@@ -86,9 +86,11 @@ class ProdutoDao
 
     public function removeProduto($id)
     {
-        return $query = $this->conexao->query(
-        "DELETE FROM produtos WHERE id = {$id}"
-      );
+
+      $query = "DELETE FROM produtos WHERE id = :id";
+      $stmt = $this->conexao->prepare($query);
+      $stmt->bindValue(':id', $id);
+      return $stmt->execute();
     }
 
     public function buscaProduto($id)
@@ -128,15 +130,44 @@ class ProdutoDao
         $tipoProduto = get_class($produto);
 
         return $query = $this->conexao->exec(
-        "UPDATE produtos SET
-        nome = '{$produto->getNome()}',
-        preco = {$produto->getPreco()},
-        descricao = '{$produto->getDescricao()}',
-        categoria_id = {$produto->getCategoria()->getId()},
-        usado = {$produto->getUsado()} ,
-        isbn = '{$isbn}',
-        tipoProduto = '{$tipoProduto}'
-        WHERE id = '{$produto->getId()}'"
-      );
+          "UPDATE produtos SET
+          nome = '{$produto->getNome()}',
+          preco = {$produto->getPreco()},
+          descricao = '{$produto->getDescricao()}',
+          categoria_id = {$produto->getCategoria()->getId()},
+          usado = {$produto->getUsado()} ,
+          isbn = '{$isbn}',
+          tipoProduto = '{$tipoProduto}'
+          WHERE id = '{$produto->getId()}'"
+        );
+
+
     }
 }
+
+
+
+
+
+// $query = "UPDATE produtos SET
+// nome = :nome,
+// preco = :preco,
+// descricao = :descricao,
+// categoria_id = :categoria_id,
+// usado = :usado,
+// isbn = :isbn,
+//  tipoProduto = :tipoProduto
+//  WHERE id = :id";
+//
+//  $stmt = $this->conexao->prepare($query);
+//
+//  $stmt->bindValue(':nome','{$produto->getNome()}');
+//  $stmt->bindValue(':preco', '{$produto->getPreco()}');
+//  $stmt->bindValue(':descricao', '{$produto->getDescricao()}');
+//  $stmt->bindValue(':categoria_id', '{$produto->getCategoria()->getId()}');
+//  $stmt->bindValue(':usado', '{$produto->getUsado()}');
+//  $stmt->bindValue(':isbn', '{$isbn}');
+//  $stmt->bindValue(':tipoProduto', '{$tipoProduto}');
+//  $stmt->bindValue(':id', '{$produto->getId()}');
+//  $stmt->execute();
+//   var_dump($stmt);die;

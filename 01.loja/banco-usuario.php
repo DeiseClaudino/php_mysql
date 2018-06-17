@@ -14,11 +14,3 @@ function buscaUsuario($conexao, $email, $senha)
     return $resultado->fetch();
 
 }
-    /* foreach ($resultado as $usuario) {
-        $email = $resultado['email'];
-        $senhaMd5 = $resultado['senha'];
-
-        array_push($usuarios, $usuario );
-    }*/
-
-    //return $usuarios;
