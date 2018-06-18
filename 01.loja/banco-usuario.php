@@ -2,15 +2,16 @@
 require_once 'conecta.php';
 function buscaUsuario($conexao, $email, $senha)
 {
-    $senhaMd5 = $conexao->quote(md5($senha));
-    $email = $conexao->quote($email);
+    $senhaMd5 = md5($senha);
+    $email = $email;
 
+    $query ="SELECT * FROM usuarios WHERE email = :email and senha = :senhaMd5";
 
-   $query ="SELECT * FROM usuarios WHERE email = {$email} and senha = {$senhaMd5}";
-    $resultado = $conexao->query($query, PDO::FETCH_ASSOC);
+    $stmt = $conexao->prepare($query);
+    $stmt->bindValue(':email', $email);
+    $stmt->bindValue(':senhaMd5', $senhaMd5);
+    $stmt->execute();
+    return $stmt->fetch();
 
-
-
-    return $resultado->fetch();
 
 }
