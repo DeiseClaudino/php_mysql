@@ -99,9 +99,10 @@ class ProdutoDao
 
     public function buscaProduto($id)
     {
-        $lista =  "SELECT * FROM produtos WHERE id = {$id}";
-        $produto_buscado = $this->conexao->query($lista, PDO::FETCH_ASSOC);
-
+        $lista =  "SELECT * FROM produtos WHERE id = :id";
+        $produto_buscado = $this->conexao->prepare($lista);
+        $produto_buscado->bindValue(':id', $id);
+        $produto_buscado->execute();
 
         foreach ($produto_buscado as $produto_buscado) {
             $tipoProduto = $produto_buscado['tipoProduto'];
