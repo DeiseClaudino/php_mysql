@@ -4,5 +4,3 @@ MAINTAINER Deise Claudino
 
 COPY . /var/www
 WORKDIR /var/www
-
-EXPOSE 3000
