@@ -1,16 +1,20 @@
-<?php
-require_once 'cabecalho.php';
-
-?>
 <h1>Lista de Produtos</h1>
 <table class="table table-striped table-bordered">
     <tr>
-      <th>Nome</th>
-      <th>Preço</th>
-      <th>Imposto</th>
-      <th>Descrição</th>
-      <th>Categoria</th>
-      <th>ISBN</th>
+
+<?php
+require_once 'cabecalho.php';
+
+$view = new ListView();
+
+
+      $view->listaTabelaTh("Nome");
+      $view->listaTabelaTh("Preço");
+      $view->listaTabelaTh("Imposto");
+      $view->listaTabelaTh("Descrição");
+      $view->listaTabelaTh("Categoria");
+      $view->listaTabelaTh("ISBN");
+      ?>
       <th colspan="2">Ações</th>
     </tr>
     <?php
@@ -20,11 +24,13 @@ require_once 'cabecalho.php';
     ?>
 
         <tr>
-            <td><?= $produto->getNome() ?></td>
-            <td><?= $produto->getPreco() ?></td>
-            <td><?= $produto->calculaImposto() ?></td>
-            <td><?= substr($produto->getDescricao(), 0, 40) ?></td>
-            <td><?= $produto->getCategoria()->getNome() ?></td>
+          <?php
+            $view->listaTabelaTd($produto->getNome());
+            $view->listaTabelaTd($produto->getPreco());
+            $view->listaTabelaTd($produto->calculaImposto());
+            $view->listaTabelaTd(substr($produto->getDescricao(), 0, 40));
+            $view->listaTabelaTd($produto->getCategoria()->getNome());
+            ?>
 
             <td>
               <?php

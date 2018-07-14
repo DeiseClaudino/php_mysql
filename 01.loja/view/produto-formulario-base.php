@@ -1,22 +1,32 @@
 <tr>
-    <td>Nome</td>
-    <td>
+<?php
+
+$view = new ListView();
+
+
+  $view->listaTabelaTd("Nome"); ?>
+<td>
+
         <input class="form-control" type="text" name="nome"
             value="<?=$produto->getNome()?>">
-    </td>
+</td>
 </tr>
 <tr>
-    <td>Preço</td>
-    <td>
+  <?php
+  $view->listaTabelaTd("Preço");
+  ?>
+
+<td>
         <input  class="form-control" type="number" step="0.01" name="preco"
             value="<?=$produto->getPreco()?>">
-    </td>
+</td>
 </tr>
 <tr>
-    <td>Descrição</td>
-    <td>
+  <?php $view->listaTabelaTd("Descrição");  ?>
+
+<td>
         <textarea class="form-control" name="descricao"><?=$produto->getDescricao()?></textarea>
-    </td>
+</td>
 </tr>
 
 <?php
@@ -24,12 +34,15 @@
 ?>
 
 <tr>
-    <td></td>
-    <td><input type="checkbox" name="usado" <?=$usado?> value="true"> Usado
+<td>
+  <input type="checkbox" name="usado" <?=$usado?> value="true"> usado
+</td>
 </tr>
 <tr>
-    <td>Categoria</td>
-    <td>
+  <?php
+  $view->listaTabelaTd("Categoria"); ?>
+
+<td>
       <select name="categoria_id" class="form-control">
   			<?php
             foreach ($categorias as $categoria) :
@@ -45,11 +58,14 @@
             endforeach
             ?>
   		</select>
-    </td>
+</td>
 </tr>
 <tr>
-    <td>Tipo do produto</td>
-    <td>
+  <?php
+  $view->listaTabelaTd("Tipo do produto");
+   ?>
+
+<td>
         <select name="tipoProduto" class="form-control">
           <optgroup label="Livros">
             <?php
@@ -69,31 +85,37 @@
           </optgroup>
 
         </select>
-    </td>
+</td>
 </tr>
-    <td>ISBN (caso seja um Livro)</td>
-    <td>
+<?php
+  $view->listaTabelaTd("ISBN (caso seja um Livro)");  ?>
+<td>
         <input type="text" name="isbn" class="form-control"
                     value="<?php if ($produto->temIsbn()) {
                 echo $produto->getIsbn();
             };?>" >
-    </td>
+</td>
 </tr>
 <tr>
-  <td>Taxa de Impressão (caso seja um Livro Físico)</td>
-  <td>
-    <input type="text" class="form-control" name="taxaImpressao" value="<?php if ($produto->temTaxaImpressao()) {
+  <?php
+  $view->listaTabelaTd("Taxa de Impressão (caso seja um Livro Físico)");
+  ?>
+
+<td>
+  <input type="text" class="form-control" name="taxaImpressao" value="<?php if ($produto->temTaxaImpressao()) {);
                 echo $produto->getTaxaImpressao();
             } ?>">
-  </td>
+</td>
 
 </tr>
 <tr>
-  <td>WaterMark (caso seja um Ebook)</td>
-  <td>
-    <input type="text" class="form-control" name="WaterMark" value="<?php if ($produto->temWaterMark()) {
+  <?php
+$view->listaTabelaTd("WaterMark (caso seja um Ebook)");
+?>
+
+<td>
+   <input type="text" class="form-control" name="WaterMark" value="<?php if ($produto->temWaterMark()) {);
                 echo $produto->getWaterMark();
             } ?>">
-  </td>
-
+</td>
 </tr>
