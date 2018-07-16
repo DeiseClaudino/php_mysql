@@ -1,5 +1,5 @@
 <?php
-require_once 'cabecalho.php';
+require_once '../view/cabecalho.php';
 require_once 'logica-usuario.php';
 $produtoDao = new ProdutoDao($conexao);
 $id = $_POST['id'];

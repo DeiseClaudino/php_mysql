@@ -1,5 +1,5 @@
 <?php
-require_once 'cabecalho.php';
+require_once '../view/cabecalho.php';
 
 $tipoProduto = $_POST['tipoProduto'];
 $produto_id = $_POST['id'];
