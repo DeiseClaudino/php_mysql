@@ -1,12 +1,12 @@
 <?php
 require_once 'cabecalho.php';
-require_once 'logica-usuario.php';
+require_once '../controller/logica-usuario.php';
 
 verificaUsuario();?>
 
 <h1>Contato</h1>
 
-<form action="envia-contato.php" method="post">
+<form action="../controller/envia-contato.php" method="post">
 <table class="table table-striped">
   <tr>
     <td>Nome</td>

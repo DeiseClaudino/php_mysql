@@ -102,7 +102,7 @@ $view = new ListView();
   ?>
 
 <td>
-  <input type="text" class="form-control" name="taxaImpressao" value="<?php if ($produto->temTaxaImpressao()) {);
+  <input type="text" class="form-control" name="taxaImpressao" value="<?php if ($produto->temTaxaImpressao()) {;
                 echo $produto->getTaxaImpressao();
             } ?>">
 </td>
@@ -114,7 +114,7 @@ $view->listaTabelaTd("WaterMark (caso seja um Ebook)");
 ?>
 
 <td>
-   <input type="text" class="form-control" name="WaterMark" value="<?php if ($produto->temWaterMark()) {);
+   <input type="text" class="form-control" name="WaterMark" value="<?php if ($produto->temWaterMark()) {;
                 echo $produto->getWaterMark();
             } ?>">
 </td>

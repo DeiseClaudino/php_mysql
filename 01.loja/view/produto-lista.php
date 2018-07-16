@@ -48,7 +48,7 @@ $view = new ListView();
                 </a>
             </td>
             <td>
-                <form action="remove-produto.php" method="post">
+                <form action="../controller/remove-produto.php" method="post">
                     <input type="hidden" name="id" value="<?=$produto->getId()?>">
                     <button class="btn btn-danger">remover</button>
                 </form>

@@ -1,7 +1,7 @@
 <?php
 function carregaClasse($nomeDaClasse)
 {
-    require_once("class/".$nomeDaClasse.".php");
+    require_once("../class/".$nomeDaClasse.".php");
 }
 
 spl_autoload_register("carregaClasse");
@@ -10,16 +10,16 @@ spl_autoload_register("carregaClasse");
 
   error_reporting(E_ALL);
 
-  require_once 'mostra-alerta.php';
-  require_once 'conecta.php';
-  //navbar-brand = marca
+  require_once '../controller/mostra-alerta.php';
+  require_once '../connectionDB/conecta.php';
+
 ?>
 <html>
 <head>
     <title>Minha loja</title>
     <meta charset="utf-8">
-    <link href="css/bootstrap.css" rel="stylesheet" />
-    <link href="css/loja.css" rel="stylesheet" />
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/loja.css" rel="stylesheet" />
 </head>
 <body>
   <div class="navbar navbar-inverse navbar-fixed-top">

@@ -13,7 +13,7 @@ $produto->setUsado($usado);
 ?>
 
 <h1>Alterando produto</h1>
-<form action="altera-produto.php" method="post">
+<form action="../controller/altera-produto.php" method="post">
 	<input type="hidden" name="id" value="<?=$produto->getId()?>">
 	<table class="table">
 		<?php include 'produto-formulario-base.php'; ?>
