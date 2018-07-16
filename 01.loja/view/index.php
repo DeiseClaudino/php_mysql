@@ -35,8 +35,6 @@ if (usuarioEstaLogado()) {
   </form>
 <?php
 }
-?>
 
-<?php
-include 'rodape.php';
+require_once 'rodape.php';
 ?>

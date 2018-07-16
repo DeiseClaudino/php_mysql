@@ -29,4 +29,4 @@ if ($produtoDao->insereProduto($produto)) {
     }
 ?>
 
-<?php include("rodape.php"); ?>
+<?php include("../view/rodape.php"); ?>

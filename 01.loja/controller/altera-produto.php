@@ -31,4 +31,4 @@ if ($produtoDao->alteraProduto($produto)) {
     }
 ?>
 
-<?php include("rodape.php"); ?>
+<?php include("../view/rodape.php"); ?>

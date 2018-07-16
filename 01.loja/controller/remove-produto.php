@@ -5,5 +5,5 @@ $produtoDao = new ProdutoDao($conexao);
 $id = $_POST['id'];
 $produtoDao->removeProduto($id);
 $_SESSION["success"] = "Produto removido com sucesso";
-header("Location: produto-lista.php");
+header("Location: ../view/produto-lista.php");
 die();
