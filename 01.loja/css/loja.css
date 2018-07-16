@@ -16,3 +16,7 @@ h1 {
 tr:hover td {
   background-color: #5CACEE;
 }
+
+th{
+  text-align: center;
+}
