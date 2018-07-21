@@ -1,0 +1,22 @@
+body {
+  padding-top: 50px;
+  background-color: #E0FFFF;
+}
+
+h1 {
+  text-align: center;
+  text-shadow: 2px 2px 2px #8B8682;
+}
+
+.principal {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+tr:hover td {
+  background-color: #5CACEE;
+}
+
+th{
+  text-align: center;
+}
