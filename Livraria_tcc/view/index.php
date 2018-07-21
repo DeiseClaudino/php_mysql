@@ -33,6 +33,10 @@ if (usuarioEstaLogado()) {
       </tr>
     </table>
   </form>
+
+
+  <p><cite>"Pouco conhecimento faz com que as pessoas se sintam orgulhosas.
+    Muito conhecimento, que se sintam humildes."</cite> Leonardo da Vinci</p>
 <?php
 }
 

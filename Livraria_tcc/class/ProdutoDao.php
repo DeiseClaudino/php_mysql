@@ -12,7 +12,7 @@ class ProdutoDao
     {
         $produtos = array();
         $resultado = $this->conexao->query(
-             'SELECT p.*, c.nome AS categoria_nome FROM produtos AS p JOIN categorias AS c ON c.id = p.categoria_id',
+             'SELECT p.*, c.nome AS categoria_nome FROM livros AS p JOIN categorias AS c ON c.id = p.categoria_id',
              PDO::FETCH_ASSOC
            );
         foreach ($resultado as $linha) {
@@ -22,7 +22,7 @@ class ProdutoDao
             $produto->atualizaBaseadoEm($linha);
             $produto->setId($linha['id']);
             $produto->getCategoria()->setNome($linha['categoria_nome']);
-            array_push($produtos, $produto);
+            array_push($livros, $produto);
         }
         return $produtos;
     }
@@ -51,7 +51,7 @@ class ProdutoDao
 
         $resultadoDaInsercao = "
                    INSERT INTO
-                     produtos(
+                     livros(
                        nome,
                        preco,
                        descricao,
@@ -91,7 +91,7 @@ class ProdutoDao
 
     public function removeProduto($id)
     {
-        $query = "DELETE FROM produtos WHERE id = :id";
+        $query = "DELETE FROM livros WHERE id = :id";
         $stmt = $this->conexao->prepare($query);
         $stmt->bindValue(':id', $id);
         return $stmt->execute();
@@ -99,7 +99,7 @@ class ProdutoDao
 
     public function buscaProduto($id)
     {
-        $lista =  "SELECT * FROM produtos WHERE id = :id";
+        $lista =  "SELECT * FROM livros WHERE id = :id";
         $produto_buscado = $this->conexao->prepare($lista);
         $produto_buscado->bindValue(':id', $id);
         $produto_buscado->execute();
@@ -135,7 +135,7 @@ class ProdutoDao
         $tipoProduto = get_class($produto);
         $usado = (int)$produto->getUsado();
 
-        $query = "UPDATE produtos SET
+        $query = "UPDATE livros SET
         nome = :nome,
         preco = :preco,
         descricao = :descricao,

@@ -16,7 +16,7 @@ spl_autoload_register("carregaClasse");
 ?>
 <html>
 <head>
-    <title>Minha loja</title>
+    <title>Minha Livraria</title>
     <meta charset="utf-8">
     <link href="../css/bootstrap.css" rel="stylesheet" />
     <link href="../css/loja.css" rel="stylesheet" />
