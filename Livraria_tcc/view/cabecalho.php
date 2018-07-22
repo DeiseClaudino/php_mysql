@@ -1,4 +1,7 @@
 <?php
+require_once '../controller/mostra-alerta.php';
+require_once '../connectionDB/conecta.php';
+
 function carregaClasse($nomeDaClasse)
 {
     require_once("../class/".$nomeDaClasse.".php");
@@ -10,8 +13,6 @@ spl_autoload_register("carregaClasse");
 
   error_reporting(E_ALL);
 
-  require_once '../controller/mostra-alerta.php';
-  require_once '../connectionDB/conecta.php';
 
 ?>
 <html>
@@ -25,13 +26,13 @@ spl_autoload_register("carregaClasse");
   <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
           <div class="navbar-header">
-              <a href="../view/index.php" class="navbar-brand">Minha Loja</a>
+              <a href="../view/index.php" class="navbar-brand">Minha Livraria</a>
           </div>
 
              <div>
               <ul class="nav navbar-nav">
-                   <li><a href="../view/produto-formulario.php">Adiciona Produto</a></li>
-                  <li><a href="../view/produto-lista.php">Listagem de Produtos</a></li>
+                   <li><a href="../view/produto-formulario.php">Adicionar Novo Livro</a></li>
+                  <li><a href="../view/produto-lista.php">Listagem de Livros</a></li>
                   <li><a href="../view/contato.php">Contato</a></li>
               </ul>
           </div>
