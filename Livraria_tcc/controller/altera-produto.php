@@ -18,9 +18,9 @@ if (array_key_exists('usado', $_POST)) {
     $produto->setUsado("false");
 }
 
-$produtoDao = new ProdutoDao($conexao);
+$livroDao = new LivroDao($conexao);
 
-if ($produtoDao->alteraProduto($produto)) {
+if ($livroDao->alteraProduto($produto)) {
     ?>
 	<p class="text-success">O produto <?= $produto->getNome() ?>, <?= $produto->getPreco() ?> foi alterado.</p>
 <?php

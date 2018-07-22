@@ -1,5 +1,5 @@
 <?php
-class ProdutoDao
+class LivroDao
 {
     private $conexao;
 

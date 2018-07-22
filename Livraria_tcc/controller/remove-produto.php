@@ -1,9 +1,9 @@
 <?php
 require_once '../view/cabecalho.php';
 require_once 'logica-usuario.php';
-$produtoDao = new ProdutoDao($conexao);
+$livroDao = new LivroDao($conexao);
 $id = $_POST['id'];
-$produtoDao->removeProduto($id);
+$livroDao->removeProduto($id);
 $_SESSION["success"] = "Produto removido com sucesso";
 header("Location: ../view/produto-lista.php");
 die();
