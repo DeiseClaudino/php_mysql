@@ -5,7 +5,7 @@ $tipoProduto = $_POST['tipoProduto'];
 $produto_id = $_POST['id'];
 $categoria_id = $_POST['categoria_id'];
 
-$factory = new ProdutoFactory();
+$factory = new LivroFactory();
 $produto = $factory->criaPor($tipoProduto, $_POST);
 $produto->atualizaBaseadoEm($_POST);
 

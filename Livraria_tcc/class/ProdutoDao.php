@@ -17,7 +17,7 @@ class ProdutoDao
            );
         foreach ($resultado as $linha) {
             $tipoProduto = $linha['tipoProduto'];
-            $factory = new ProdutoFactory();
+            $factory = new LivroFactory();
             $produto = $factory->criaPor($tipoProduto, $linha);
             $produto->atualizaBaseadoEm($linha);
             $produto->setId($linha['id']);
@@ -106,7 +106,7 @@ class ProdutoDao
 
         foreach ($produto_buscado as $produto_buscado) {
             $tipoProduto = $produto_buscado['tipoProduto'];
-            $factory = new ProdutoFactory();
+            $factory = new LivroFactory();
             $produto = $factory->criaPor($tipoProduto, $produto_buscado);
             $produto->atualizaBaseadoEm($produto_buscado);
             $produto->setId($produto_buscado['id']);

@@ -1,6 +1,6 @@
 <?php
 
-class ProdutoFactory
+class LivroFactory
 {
     private $classes = array("Ebook", "LivroFisico");
 

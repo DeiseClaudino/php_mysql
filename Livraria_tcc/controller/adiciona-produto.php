@@ -7,7 +7,7 @@ verificaUsuario();
 
 $tipoProduto = $_POST['tipoProduto'];
 
-$factory = new ProdutoFactory();
+$factory = new LivroFactory();
 $produto = $factory->criaPor($tipoProduto, $_POST);
 $produto->atualizaBaseadoEm($_POST);
 
