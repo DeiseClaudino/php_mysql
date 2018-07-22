@@ -10,7 +10,6 @@ $view = new ListView();
 
       $view->listaTabelaTh("Nome");
       $view->listaTabelaTh("Preço");
-      $view->listaTabelaTh("Imposto");
       $view->listaTabelaTh("Descrição");
       $view->listaTabelaTh("Categoria");
       $view->listaTabelaTh("ISBN");
@@ -18,8 +17,8 @@ $view = new ListView();
       <th colspan="2">Ações</th>
     </tr>
     <?php
-    $produtoDao = new ProdutoDao($conexao);
-    $produtos = $produtoDao->listaProdutos();
+    $livroDao = new LivroDao($conexao);
+    $produtos = $livroDao->listaProdutos();
     foreach ($produtos as $produto) :
     ?>
 
@@ -27,7 +26,6 @@ $view = new ListView();
           <?php
             $view->listaTabelaTd($produto->getNome());
             $view->listaTabelaTd($produto->getPreco());
-            $view->listaTabelaTd($produto->calculaImposto());
             $view->listaTabelaTd(substr($produto->getDescricao(), 0, 40));
             $view->listaTabelaTd($produto->getCategoria()->getNome());
             ?>
