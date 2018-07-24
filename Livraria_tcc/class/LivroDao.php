@@ -22,7 +22,7 @@ class LivroDao
             $produto->atualizaBaseadoEm($linha);
             $produto->setId($linha['id']);
             $produto->getCategoria()->setNome($linha['categoria_nome']);
-            array_push($livros, $produto);
+            array_push($produtos, $produto);
         }
         return $produtos;
     }
@@ -44,51 +44,49 @@ class LivroDao
 
         $tipoProduto = get_class($produto);
 
-
         $usado = (int)$produto->getUsado();
         $categoriaId = $produto->getCategoria()->getId();
 
 
-        $resultadoDaInsercao = "
-                   INSERT INTO
-                     livros(
-                       nome,
-                       preco,
-                       descricao,
-                       categoria_id,
-                       usado,
-                       isbn,
-                       tipoProduto,
-                       TaxaImpressao,
-                       waterMark
-                     ) VALUES (
-                      :nome,
-                      :preco,
-                      :descricao,
-                      :categoria_id,
-                      :usado,
-                      :isbn,
-                      :tipoProduto,
-                      :TaxaImpressao,
-                      :waterMark
-                    )
-                 ";
+                $resultadoDaInsercao = "
+                           INSERT INTO
+                             livros(
+                               nome,
+                               preco,
+                               descricao,
+                               categoria_id,
+                               usado,
+                               isbn,
+                               tipoProduto,
+                               TaxaImpressao,
+                               waterMark
+                             ) VALUES (
+                              :nome,
+                              :preco,
+                              :descricao,
+                              :categoria_id,
+                              :usado,
+                              :isbn,
+                              :tipoProduto,
+                              :TaxaImpressao,
+                              :waterMark
+                            )
+                         ";
 
-        $stmt = $this->conexao->prepare($resultadoDaInsercao);
-        $stmt->bindValue(':nome', $produto->getNome());
-        $stmt->bindValue(':preco', $produto->getPreco());
-        $stmt->bindValue(':descricao', $produto->getDescricao());
-        $stmt->bindValue(':categoria_id', $categoriaId);
-        $stmt->bindValue(':usado', $usado);
-        $stmt->bindValue(':isbn', $isbn);
-        $stmt->bindValue(':tipoProduto', $tipoProduto);
-        $stmt->bindValue(':TaxaImpressao', $taxaImpressao);
-        $stmt->bindValue(':waterMark', $waterMark);
-        $stmt->execute();
+                $stmt = $this->conexao->prepare($resultadoDaInsercao);
+                $stmt->bindValue(':nome', $produto->getNome());
+                $stmt->bindValue(':preco', $produto->getPreco());
+                $stmt->bindValue(':descricao', $produto->getDescricao());
+                $stmt->bindValue(':categoria_id', $categoriaId);
+                $stmt->bindValue(':usado', $usado);
+                $stmt->bindValue(':isbn', $isbn);
+                $stmt->bindValue(':tipoProduto', $tipoProduto);
+                $stmt->bindValue(':TaxaImpressao', $taxaImpressao);
+                $stmt->bindValue(':waterMark', $waterMark);
+                $stmt->execute();
 
-        return $resultadoDaInsercao;
-    }
-
+                return $resultadoDaInsercao;
+            }
     public function removeProduto($id)
     {
         $query = "DELETE FROM livros WHERE id = :id";

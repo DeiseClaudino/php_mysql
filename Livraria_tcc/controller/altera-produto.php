@@ -4,6 +4,7 @@ require_once '../view/cabecalho.php';
 $tipoProduto = $_POST['tipoProduto'];
 $produto_id = $_POST['id'];
 $categoria_id = $_POST['categoria_id'];
+$usado = $_POST['usado'];
 
 $factory = new LivroFactory();
 $produto = $factory->criaPor($tipoProduto, $_POST);

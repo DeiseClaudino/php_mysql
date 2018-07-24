@@ -67,11 +67,6 @@ abstract class Produto
         return $this->preco;
     }
 
-    public function calculaImposto()
-    {
-        return $this->preco * 0.195;
-    }
-
     public function temIsbn()
     {
         return $this instanceof Livro;
