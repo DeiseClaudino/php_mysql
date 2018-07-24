@@ -16,9 +16,9 @@ class LivroDao
              PDO::FETCH_ASSOC
            );
         foreach ($resultado as $linha) {
-            $tipoProduto = $linha['tipoProduto'];
+            $tipoLivro = $linha['tipoLivro'];
             $factory = new LivroFactory();
-            $produto = $factory->criaPor($tipoProduto, $linha);
+            $produto = $factory->criaPor($tipoLivro, $linha);
             $produto->atualizaBaseadoEm($linha);
             $produto->setId($linha['id']);
             $produto->getCategoria()->setNome($linha['categoria_nome']);
@@ -42,7 +42,7 @@ class LivroDao
             $waterMark = $produto->getWaterMark();
         }
 
-        $tipoProduto = get_class($produto);
+        $tipoLivro = get_class($produto);
 
         $categoriaId = $produto->getCategoria()->getId();
 
@@ -102,9 +102,9 @@ class LivroDao
         $produto_buscado->execute();
 
         foreach ($produto_buscado as $produto_buscado) {
-            $tipoProduto = $produto_buscado['tipoProduto'];
+            $tipoLivro = $produto_buscado['tipoLivro'];
             $factory = new LivroFactory();
-            $produto = $factory->criaPor($tipoProduto, $produto_buscado);
+            $produto = $factory->criaPor($tipoLivro, $produto_buscado);
             $produto->atualizaBaseadoEm($produto_buscado);
             $produto->setId($produto_buscado['id']);
         }
@@ -129,7 +129,7 @@ class LivroDao
             $taxaImpressao = $produto->getTaxaImpressao();
         }
 
-        $tipoProduto = get_class($produto);
+        $tipoLivro = get_class($produto);
 
         $query = "UPDATE livros SET
         nome = :nome,
