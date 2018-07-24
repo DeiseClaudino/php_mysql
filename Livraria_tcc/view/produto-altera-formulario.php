@@ -7,9 +7,6 @@ $id = $_GET['id'];
 $produto = $livroDao->buscaProduto($id);
 $categorias = $categoriaDao->listaCategorias();
 
-$usado = $produto->getUsado() ? "checked = 'checked'" : "";
-$produto->setUsado($usado);
-
 ?>
 
 <h1>Alterando produto</h1>

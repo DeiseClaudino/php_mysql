@@ -13,12 +13,10 @@ class LivroFactory
         $categoria = new Categoria();
         $categoria->setId($params['categoria_id']);
 
-        $usado = $params['usado'];
-
         if (in_array($tipoProduto, $this->classes)) {
-            return new $tipoProduto($nome, $preco, $descricao, $categoria, $usado);
+            return new $tipoProduto($nome, $preco, $descricao, $categoria);
         }
 
-        return new LivroFisico($nome, $preco, $descricao, $categoria, $usado);
+        return new LivroFisico($nome, $preco, $descricao, $categoria);
     }
 }

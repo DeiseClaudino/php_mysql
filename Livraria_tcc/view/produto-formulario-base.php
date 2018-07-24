@@ -13,7 +13,7 @@ $view = new ListView();
 </tr>
 <tr>
   <?php
-  $view->listaTabelaTd("Preço");
+    $view->listaTabelaTd("Preço");
   ?>
 
 <td>
@@ -28,19 +28,10 @@ $view = new ListView();
         <textarea class="form-control" name="descricao"><?=$produto->getDescricao()?></textarea>
 </td>
 </tr>
-
-<?php
-  $usado = $produto->getUsado() ? "checked='checked'" : "";
-?>
-
-<tr>
-<td>
-  <input type="checkbox" name="usado" <?=$usado?> value="true"> usado
-</td>
-</tr>
 <tr>
   <?php
-  $view->listaTabelaTd("Categoria"); ?>
+    $view->listaTabelaTd("Categoria");
+  ?>
 
 <td>
       <select name="categoria_id" class="form-control">
@@ -62,7 +53,7 @@ $view = new ListView();
 </tr>
 <tr>
   <?php
-  $view->listaTabelaTd("Tipo do produto");
+  $view->listaTabelaTd("Tipo de livro");
    ?>
 
 <td>
@@ -88,12 +79,12 @@ $view = new ListView();
 </td>
 </tr>
 <?php
-  $view->listaTabelaTd("ISBN (caso seja um Livro)");  ?>
+  $view->listaTabelaTd("ISBN");  ?>
 <td>
         <input type="text" name="isbn" class="form-control"
                     value="<?php if ($produto->temIsbn()) {
                 echo $produto->getIsbn();
-            };?>" >
+            }?>" >
 </td>
 </tr>
 <tr>
@@ -102,7 +93,7 @@ $view = new ListView();
   ?>
 
 <td>
-  <input type="text" class="form-control" name="taxaImpressao" value="<?php if ($produto->temTaxaImpressao()) {;
+  <input type="text" class="form-control" name="taxaImpressao" value="<?php if ($produto->temTaxaImpressao()) {
                 echo $produto->getTaxaImpressao();
             } ?>">
 </td>
@@ -114,7 +105,7 @@ $view->listaTabelaTd("WaterMark (caso seja um Ebook)");
 ?>
 
 <td>
-   <input type="text" class="form-control" name="WaterMark" value="<?php if ($produto->temWaterMark()) {;
+   <input type="text" class="form-control" name="WaterMark" value="<?php if ($produto->temWaterMark()) {
                 echo $produto->getWaterMark();
             } ?>">
 </td>

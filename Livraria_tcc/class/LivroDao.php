@@ -44,49 +44,48 @@ class LivroDao
 
         $tipoProduto = get_class($produto);
 
-        $usado = (int)$produto->getUsado();
         $categoriaId = $produto->getCategoria()->getId();
 
 
-                $resultadoDaInsercao = "
-                           INSERT INTO
-                             livros(
-                               nome,
-                               preco,
-                               descricao,
-                               categoria_id,
-                               usado,
-                               isbn,
-                               tipoProduto,
-                               TaxaImpressao,
-                               waterMark
-                             ) VALUES (
-                              :nome,
-                              :preco,
-                              :descricao,
-                              :categoria_id,
-                              :usado,
-                              :isbn,
-                              :tipoProduto,
-                              :TaxaImpressao,
-                              :waterMark
-                            )
-                         ";
+        $resultadoDaInsercao = "
+                   INSERT INTO
+                     livros(
+                       nome,
+                       preco,
+                       descricao,
+                       categoria_id,
+                       isbn,
+                       tipoLivro,
+                       TaxaImpressao,
+                       waterMark
+                     ) VALUES (
+                      :nome,
+                      :preco,
+                      :descricao,
+                      :categoria_id,
+                      :isbn,
+                      :tipoLivro,
+                      :TaxaImpressao,
+                      :waterMark
+                    )
+                 ";
 
-                $stmt = $this->conexao->prepare($resultadoDaInsercao);
-                $stmt->bindValue(':nome', $produto->getNome());
-                $stmt->bindValue(':preco', $produto->getPreco());
-                $stmt->bindValue(':descricao', $produto->getDescricao());
-                $stmt->bindValue(':categoria_id', $categoriaId);
-                $stmt->bindValue(':usado', $usado);
-                $stmt->bindValue(':isbn', $isbn);
-                $stmt->bindValue(':tipoProduto', $tipoProduto);
-                $stmt->bindValue(':TaxaImpressao', $taxaImpressao);
-                $stmt->bindValue(':waterMark', $waterMark);
-                $stmt->execute();
 
-                return $resultadoDaInsercao;
-            }
+        $stmt = $this->conexao->prepare($resultadoDaInsercao);
+        $stmt->bindValue(':nome', $produto->getNome());
+        $stmt->bindValue(':preco', $produto->getPreco());
+        $stmt->bindValue(':descricao', $produto->getDescricao());
+        $stmt->bindValue(':categoria_id', $categoriaId);
+        $stmt->bindValue(':isbn', $isbn);
+        $stmt->bindValue(':tipoLivro', $tipoLivro);
+        $stmt->bindValue(':TaxaImpressao', $taxaImpressao);
+        $stmt->bindValue(':waterMark', $waterMark);
+        $stmt->execute();
+
+
+        return $resultadoDaInsercao;
+    }
+
     public function removeProduto($id)
     {
         $query = "DELETE FROM livros WHERE id = :id";
@@ -131,16 +130,14 @@ class LivroDao
         }
 
         $tipoProduto = get_class($produto);
-        $usado = (int)$produto->getUsado();
 
         $query = "UPDATE livros SET
         nome = :nome,
         preco = :preco,
         descricao = :descricao,
         categoria_id = :categoria_id,
-        usado = :usado,
         isbn = :isbn,
-        tipoProduto = :tipoProduto
+        tipoLivro = :tipoLivro
          WHERE id = :id";
 
         $stmt = $this->conexao->prepare($query);
@@ -149,9 +146,8 @@ class LivroDao
         $stmt->bindValue(':preco', $produto->getPreco());
         $stmt->bindValue(':descricao', $produto->getDescricao());
         $stmt->bindValue(':categoria_id', $produto->getCategoria()->getId());
-        $stmt->bindValue(':usado', $usado);
         $stmt->bindValue(':isbn', $isbn);
-        $stmt->bindValue(':tipoProduto', $tipoProduto);
+        $stmt->bindValue(':tipoLivro', $tipoLivro);
         $stmt->bindValue(':id', $produto->getId());
         return $stmt->execute();
     }

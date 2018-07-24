@@ -13,7 +13,6 @@ $produto->atualizaBaseadoEm($_POST);
 
 $livroDao = new LivroDao($conexao);
 
-
 if ($livroDao->insereProduto($produto)) {
     ?>
   <p class="text-success">
