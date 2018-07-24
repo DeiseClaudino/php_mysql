@@ -9,10 +9,7 @@ function carregaClasse($nomeDaClasse)
 
 spl_autoload_register("carregaClasse");
 
-
-
   error_reporting(E_ALL);
-
 
 ?>
 <html>
@@ -31,8 +28,8 @@ spl_autoload_register("carregaClasse");
 
              <div>
               <ul class="nav navbar-nav">
-                   <li><a href="../view/produto-formulario.php">Adicionar Novo Livro</a></li>
-                  <li><a href="../view/produto-lista.php">Listagem de Livros</a></li>
+                   <li><a href="../view/produto-formulario.php">Adicionar Novo</a></li>
+                  <li><a href="../view/produto-lista.php">Meus Livros</a></li>
                   <li><a href="../view/contato.php">Contato</a></li>
               </ul>
           </div>

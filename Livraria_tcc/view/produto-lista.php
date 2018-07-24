@@ -1,4 +1,4 @@
-<h1>Lista de Produtos</h1>
+<h1>Lista de Livros</h1>
 <table class="table table-striped table-bordered">
     <tr>
 
