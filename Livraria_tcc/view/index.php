@@ -8,15 +8,14 @@ require_once '../controller/logica-usuario.php';
 <?php
 
 if (usuarioEstaLogado()) {
-
-?>
+    ?>
 
   <p class="text-success">
     Você está logado como <?= usuarioLogado() ?> <a href="../controller/logout.php">Deslogar</a>
   </p>
 <?php
 } else {
-?>
+        ?>
   <h2>Login</h2>
   <form action="../controller/login.php" method="post">
     <table class="table">
@@ -38,7 +37,7 @@ if (usuarioEstaLogado()) {
   <p><cite>"Pouco conhecimento faz com que as pessoas se sintam orgulhosas.
     Muito conhecimento, que se sintam humildes."</cite> Leonardo da Vinci</p>
 <?php
-}
+    }
 
 require_once 'rodape.php';
 ?>

@@ -83,8 +83,8 @@ $view = new ListView();
 <td>
         <input type="text" name="isbn" class="form-control"
                     value="<?php if ($produto->temIsbn()) {
-                echo $produto->getIsbn();
-            }?>" >
+      echo $produto->getIsbn();
+  }?>" >
 </td>
 </tr>
 <tr>
@@ -94,8 +94,8 @@ $view = new ListView();
 
 <td>
   <input type="text" class="form-control" name="taxaImpressao" value="<?php if ($produto->temTaxaImpressao()) {
-                echo $produto->getTaxaImpressao();
-            } ?>">
+      echo $produto->getTaxaImpressao();
+  } ?>">
 </td>
 
 </tr>
@@ -106,7 +106,7 @@ $view->listaTabelaTd("WaterMark (caso seja um Ebook)");
 
 <td>
    <input type="text" class="form-control" name="WaterMark" value="<?php if ($produto->temWaterMark()) {
-                echo $produto->getWaterMark();
-            } ?>">
+    echo $produto->getWaterMark();
+} ?>">
 </td>
 </tr>

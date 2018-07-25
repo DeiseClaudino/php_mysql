@@ -6,16 +6,16 @@ class CategoriaDao
     {
         $this->conexao = $conexao;
     }
-    function listaCategorias()
+    public function listaCategorias()
     {
         $categorias = array();
 
-          $resultado= $this->conexao->query(
+        $resultado= $this->conexao->query(
           "SELECT * FROM categorias",
           PDO::FETCH_ASSOC
         );
 
-          foreach ($resultado as $linha) {
+        foreach ($resultado as $linha) {
             $categoria = new Categoria();
             $categoria->setId($linha['id']);
             $categoria->setNome($linha['nome']);

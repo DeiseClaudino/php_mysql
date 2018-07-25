@@ -12,6 +12,4 @@ function buscaUsuario($conexao, $email, $senha)
     $stmt->bindValue(':senhaMd5', $senhaMd5);
     $stmt->execute();
     return $stmt->fetch();
-
-
 }

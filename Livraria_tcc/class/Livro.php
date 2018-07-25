@@ -12,5 +12,4 @@ abstract class Livro extends Produto
     {
         return $this->isbn = $isbn;
     }
-
 }

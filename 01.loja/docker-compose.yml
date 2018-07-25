@@ -1,0 +1,29 @@
+version: '3'
+volumes:
+  data:
+services:
+    php:
+        build:
+            dockerfile: ./Dockerfile
+            context: .
+        container_name: php-loja
+        ports:
+            - "80:80"
+        networks:
+            - minha-rede
+        depends_on:
+            - "mysql"
+
+    mysql:
+        image: mysql
+        volumes:
+            - data:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=""
+            - MYSQL_DATABASE=Produtos
+        networks:
+            - minha-rede
+
+networks:
+    minha-rede:
+        driver: bridge
