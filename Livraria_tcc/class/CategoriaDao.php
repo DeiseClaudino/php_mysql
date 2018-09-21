@@ -11,7 +11,7 @@ class CategoriaDao
         $categorias = array();
 
         $resultado= $this->conexao->query(
-          "SELECT * FROM categorias",
+          "SELECT * FROM categorias ORDER BY nome ASC",
           PDO::FETCH_ASSOC
         );
 
