@@ -1,16 +1,14 @@
 <?php
 require_once '../controller/mostra-alerta.php';
 require_once '../connectionDB/conecta.php';
+require_once '../class/bench-class.php';
 
 function carregaClasse($nomeDaClasse)
 {
     require_once("../class/".$nomeDaClasse.".php");
 }
-
 spl_autoload_register("carregaClasse");
-
   error_reporting(E_ALL);
-
 ?>
 <html>
 <head>
